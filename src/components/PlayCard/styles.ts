@@ -20,7 +20,7 @@ export const Card = styled.div`
   flex-direction: column;
   justify-content: space-between;
   background-color: white; 
-  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  box-shadow: rgb(0 0 0 / 24%) 0px 8px 12px;
   cursor: pointer;
 
   width: var(--card-width);

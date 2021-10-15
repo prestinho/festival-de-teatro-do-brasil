@@ -37,6 +37,59 @@ html, body, #root {
 }
 
 h1 { 
-    font-size: 10vh;
+    font-size: 3.5rem;
+    line-height: 3rem;
+    padding-left: 20px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -2px;
+
+    background: linear-gradient(#ff46be,#ff2525);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+
+    @media(min-width: 768px) {
+        font-size: 5rem;
+        line-height: 4.5rem;
+    }
 }
+
+
+
+.puffIn {
+  animation-name: puffIn;
+}
+
+@-webkit-keyframes puffIn {
+  0% {
+    opacity: 0;
+    transform-origin: 50% 50%;
+    transform: scale(2, 2);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform-origin: 50% 50%;
+    transform: scale(1, 1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes puffIn {
+  0% {
+    opacity: 0;
+    transform-origin: 50% 50%;
+    transform: scale(2, 2);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform-origin: 50% 50%;
+    transform: scale(1, 1);
+    filter: blur(0px);
+  }
+}
+
 `;

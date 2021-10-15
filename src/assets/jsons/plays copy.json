@@ -1,0 +1,197 @@
+[
+  {
+    "id": "UUUID",
+    "name": "Deslenhar",
+    "state": "PE",
+    "group": "Teatro Miçanga",
+    "year": "2018",
+    "summary": "Peça legal",
+    "about": "................",
+    "teaser": "",
+    "crew": [
+      {
+        "title": "Atriz",
+        "name": "Amanda Pegado"
+      },
+      {
+        "title": "Ator",
+        "name": "André Alecar"
+      },
+      {
+        "title": "Ator",
+        "name": "Fernando Rybka"
+      },
+      {
+        "title": "Produtora",
+        "name": "Camila Mendes"
+      },
+      {
+        "title": "Produtora",
+        "name": "Bárbara Souza"
+      },
+      {
+        "title": "Figurinista",
+        "name": "Maria Agrelli"
+      }
+    ],
+    "poster": {
+      "image": "https://teatromicanga.com/wp-content/uploads/2021/03/quadrado.png",
+      "caption": "poster assim assado"
+    },
+    "images": [
+      {
+        "image": "https://teatromicanga.com/wp-content/uploads/2021/03/instagram.jpg",
+        "caption": "poster assim assado"
+      },
+      {
+        "image": "https://teatromicanga.com/wp-content/uploads/2021/03/42058906_2162956087307400_7986691325581852672_n-1.jpg",
+        "caption": "poster assim assado"
+      }
+    ],
+    "sessions": [
+      {
+        "place": "Casarão Magiluth",
+        "time": {
+          "day": "26-03-2022",
+          "hour": "19h"
+        },
+        "ticket-fees": [
+          {
+            "type": "Pague quanto puder",
+            "value": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "UUUID",
+    "name": "A Invenção do Nordeste",
+    "state": "RN",
+    "group": "Teatro Carmin",
+    "year": "2017",
+    "summary": "Peça legal",
+    "about": "................",
+    "teaser": "",
+    "crew": [
+      {
+        "title": "Atriz",
+        "name": "Amanda Pegado"
+      },
+      {
+        "title": "Ator",
+        "name": "André Alecar"
+      },
+      {
+        "title": "Ator",
+        "name": "Fernando Rybka"
+      },
+      {
+        "title": "Produtora",
+        "name": "Camila Mendes"
+      },
+      {
+        "title": "Produtora",
+        "name": "Bárbara Souza"
+      },
+      {
+        "title": "Figurinista",
+        "name": "Maria Agrelli"
+      }
+    ],
+    "poster": {
+      "image": "https://lulacerda.ig.com.br/wp-content/uploads/2021/06/5c71775035443-768x432.jpg",
+      "caption": "poster assim assado"
+    },
+    "images": [
+      {
+        "image": "https://teatromicanga.com/wp-content/uploads/2021/03/instagram.jpg",
+        "caption": "poster assim assado"
+      },
+      {
+        "image": "https://teatromicanga.com/wp-content/uploads/2021/03/42058906_2162956087307400_7986691325581852672_n-1.jpg",
+        "caption": "poster assim assado"
+      }
+    ],
+    "sessions": [
+      {
+        "place": "Casarão Magiluth",
+        "time": {
+          "day": "26-03-2022",
+          "hour": "19h"
+        },
+        "ticket-fees": [
+          {
+            "type": "Pague quanto puder",
+            "value": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "UUUID",
+    "name": "Deslenhar",
+    "state": "PE",
+    "group": "Teatro Miçanga",
+    "year": "2018",
+    "summary": "Peça legal",
+    "about": "................",
+    "teaser": "",
+    "crew": [
+      {
+        "title": "Atriz",
+        "name": "Amanda Pegado"
+      },
+      {
+        "title": "Ator",
+        "name": "André Alecar"
+      },
+      {
+        "title": "Ator",
+        "name": "Fernando Rybka"
+      },
+      {
+        "title": "Produtora",
+        "name": "Camila Mendes"
+      },
+      {
+        "title": "Produtora",
+        "name": "Bárbara Souza"
+      },
+      {
+        "title": "Figurinista",
+        "name": "Maria Agrelli"
+      }
+    ],
+    "poster": {
+      "image": "https://teatromicanga.com/wp-content/uploads/2021/03/quadrado.png",
+      "caption": "poster assim assado"
+    },
+    "images": [
+      {
+        "image": "https://teatromicanga.com/wp-content/uploads/2021/03/instagram.jpg",
+        "caption": "poster assim assado"
+      },
+      {
+        "image": "https://teatromicanga.com/wp-content/uploads/2021/03/42058906_2162956087307400_7986691325581852672_n-1.jpg",
+        "caption": "poster assim assado"
+      }
+    ],
+    "sessions": [
+      {
+        "place": "Casarão Magiluth",
+        "time": {
+          "day": "26-03-2022",
+          "hour": "19h"
+        },
+        "ticket-fees": [
+          {
+            "type": "Pague quanto puder",
+            "value": ""
+          }
+        ]
+      }
+    ]
+  }
+]
