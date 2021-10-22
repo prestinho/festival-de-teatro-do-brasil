@@ -19,7 +19,7 @@ const PlayCard: React.FC<Props> = ({ play }) => {
         <Title>
           <h3>{play.name}</h3>
           <span>
-            {play.group} - {play.state}
+            {play.group ? `${play.group} - ` : ''}{play.state}
           </span>
         </Title>
       </div>
