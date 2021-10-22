@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { KeyboardArrowRight } from "@styled-icons/material-rounded/KeyboardArrowRight";
 
@@ -11,6 +11,7 @@ export interface Props {
 }
 
 const PlayCard: React.FC<Props> = ({ play }) => {
+  console.log(play.sessions)
   return (
     <Card>
       <div>
@@ -29,7 +30,7 @@ const PlayCard: React.FC<Props> = ({ play }) => {
               Dia {session.time.day.split("-")[0]} - {session.time.hour}
             </div>
             <div>
-              <b>{session.place}</b>
+              <b>{session.place.name}</b>
             </div>
           </PlaySession>
         ))}
@@ -41,4 +42,4 @@ const PlayCard: React.FC<Props> = ({ play }) => {
   );
 };
 
-export default PlayCard;
+export default memo(PlayCard);
