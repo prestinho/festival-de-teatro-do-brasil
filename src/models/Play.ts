@@ -1,10 +1,11 @@
 export interface Play {
+    id: string,
     name: string;
     group?: string;
     state: string;
     year?: string;
-    summary: string;
-    about: string;
+    summary?: string;
+    about?: string;
     teaser?: string;
     crew?: (CrewPerson)[] | null;
     poster: Image;
@@ -20,7 +21,7 @@ export interface Play {
     caption: string;
   }
   export interface Session {
-    place: string;
+    place: Place;
     time: Time;
     ticketFees?: (TicketFeesEntity)[] | null;
   }
@@ -32,4 +33,8 @@ export interface Play {
     type: string;
     value: string;
   }
-  
+  export interface Place {
+    name: string;
+    address: string;
+    state: string;
+  }
