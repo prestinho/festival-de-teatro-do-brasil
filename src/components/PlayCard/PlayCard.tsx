@@ -4,14 +4,13 @@ import { KeyboardArrowRight } from "@styled-icons/material-rounded/KeyboardArrow
 
 import { Card, Poster, Title, Info, PlaySession, Actions } from "./styles";
 
-import { Play } from "../../models/Play";
+import { Play } from "../../models/Play/Play";
 
 export interface Props {
   play: Play;
 }
 
 const PlayCard: React.FC<Props> = ({ play }) => {
-  console.log(play.sessions)
   return (
     <Card>
       <div>
