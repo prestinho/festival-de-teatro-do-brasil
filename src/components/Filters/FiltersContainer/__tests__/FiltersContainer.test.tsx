@@ -7,7 +7,7 @@ describe("tests for component Filters", () => {
     test('Should exist container', () => {
         render(<FiltersContainer></FiltersContainer>);
 
-        const container = screen.getByTestId("Filters")
+        const container = screen.getByTestId("filters")
         expect(container).toBeInTheDocument();
     })
 })
