@@ -9,4 +9,8 @@ export const PageContainer = styled.div`
     color: var(--terciary-color);
     padding: 5vw;
 
+    @media(min-width: 768px) {
+        padding-top: 20vh;
+    }
+
 `;
