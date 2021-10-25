@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { Container, H1 } from './styles';
+import { Container, H1, Dias } from './styles';
 
 
 export interface Props {
 }
 
-const Banner: React.FC<Props> = ({}) => {
+const Banner: React.FC<Props> = () => {
     return (
         <Container>
             <H1>
@@ -14,6 +14,9 @@ const Banner: React.FC<Props> = ({}) => {
                 DE TEATRO <br/>
                 DO BRASIL
             </H1>
+            <Dias>
+                <h2>Dias 25, 26 e 27 de Março</h2>
+            </Dias>
         </Container>
     )
 }
