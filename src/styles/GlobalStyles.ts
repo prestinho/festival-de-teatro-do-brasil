@@ -7,6 +7,7 @@ export default createGlobalStyle`
     --secondary-color: #ffcc00;
     --terciary-color: #ed1b24;
     --quaternary-color: #2E8FC6;
+    --quinternary-color: #83b01e;
 
     --white: #ffffff;
     --light-gray: #f9faf4;
@@ -51,6 +52,10 @@ h1 {
     -moz-text-fill-color: transparent;
 
     @media(min-width: 768px) {
+        font-size: 4rem;
+        line-height: 4rem;
+    }
+    @media(min-width: 950px) {
         font-size: 5rem;
         line-height: 4.5rem;
     }
