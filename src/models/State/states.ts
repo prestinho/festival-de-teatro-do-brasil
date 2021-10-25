@@ -1,0 +1,1 @@
+export const states = ['AL', 'BA', 'CE','MA','PB','PE','PI','RN','SE']
