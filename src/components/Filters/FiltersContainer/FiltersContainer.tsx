@@ -1,17 +1,19 @@
-import React from 'react'
-import TextFilter from '../TextFilter/TextFilter';
+import React from "react";
+import StateFilter from "../StateFilter/StateFilter";
+import TextFilter from "../TextFilter/TextFilter";
 
-import { Container } from './styles';
+import { states } from "../../../models/State/states";
 
-export interface Props {
-}
+import { Container, ContainerFooter } from "./styles";
 
-const FiltersContainer: React.FC<Props> = ({}) => {
-    return (
-        <Container>
-            <TextFilter />
-        </Container>
-    )
-}
+export interface Props {}
+
+const FiltersContainer: React.FC<Props> = () => {
+  return (
+    <Container data-testid="filters">
+      <StateFilter states={states} />
+    </Container>
+  );
+};
 
 export default FiltersContainer;
