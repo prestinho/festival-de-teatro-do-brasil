@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Img, Girl } from "./styles";
+import { Container, Img, Girl, Link } from "./styles";
 
 import GirlImg from "../../assets/imgs/ftb.png";
 
@@ -14,6 +14,11 @@ const Navbar: React.FC<Props> = ({ hasNavigated }) => {
       <Girl>
         <Img src={GirlImg} />
       </Girl>
+      <Link hasNavigated={hasNavigated}>Home</Link>
+      <Link hasNavigated={hasNavigated}>O Festival</Link>
+      <Link hasNavigated={hasNavigated}>O PAVIO</Link>
+      <Link hasNavigated={hasNavigated}>Inscrições</Link>
+      <Link hasNavigated={hasNavigated}>Programação</Link>
     </Container>
   );
 };
