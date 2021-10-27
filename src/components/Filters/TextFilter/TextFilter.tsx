@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import { Input } from './styles';
 
@@ -13,4 +13,4 @@ const TextFilter: React.FC<Props> = ({...props}) => {
     )
 }
 
-export default TextFilter;
+export default memo(TextFilter);

@@ -10,7 +10,7 @@ export default createGlobalStyle`
     --quinternary-color: #83b01e;
 
     --white: #ffffff;
-    --light-gray: #f9faf4;
+    --light-gray: #dedede;
     --gray: #777777;
     --dark-gray: #444444;
 

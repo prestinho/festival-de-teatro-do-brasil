@@ -19,7 +19,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: white; 
+  background-color: var(--white); 
   box-shadow: rgb(0 0 0 / 24%) 0px 8px 12px;
   cursor: pointer;
 
