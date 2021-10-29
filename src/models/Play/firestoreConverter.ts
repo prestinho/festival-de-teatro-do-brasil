@@ -25,6 +25,7 @@ const playConverter = {
       const place: Place = {
         name: session.place.name,
         id: session.place.id,
+        address: session.place.address,
       };
       const time: Time = {
         day: session.day,
