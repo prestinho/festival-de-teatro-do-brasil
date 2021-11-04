@@ -95,7 +95,6 @@ const Subscription: React.FC<Props> = () => {
               image={play.poster}
               onChange={onChangeImageHandler}
               placeholderCaption="Legenda para o poster (para acessibilidade)"
-              placeholderImage="Link para imagem com poster do espetáculo"
               errorMsg="Escreve um pouquinho sobre a imagem para quem usa leitor de tela"
               forceValidation={forceValidation}
               maxSize={5}

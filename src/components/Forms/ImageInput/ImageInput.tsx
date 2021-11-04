@@ -15,7 +15,6 @@ import { Container, FileUploadDiv, Img, Label, ErrorLabel } from "./styles";
 export interface Props {
   image: Image;
   onChange?: (image: Image) => void;
-  placeholderImage: string;
   placeholderCaption: string;
   errorMsg?: string;
   forceValidation?: boolean;
@@ -25,7 +24,6 @@ export interface Props {
 const ImageInput: React.FC<Props> = ({
   image,
   onChange,
-  placeholderImage,
   placeholderCaption,
   errorMsg,
   forceValidation,

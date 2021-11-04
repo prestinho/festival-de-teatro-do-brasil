@@ -15,10 +15,12 @@ const mockHandler = jest.fn();
 
 describe("tests for component StateFilter", () => {
   test("Should render all available states", () => {
-    render(<StateFilter states={states} checked="1" handleChange={mockHandler}></StateFilter>);
+    render(
+      <StateFilter states={states} checked="1" handleChange={mockHandler}></StateFilter>
+    );
 
     states.forEach((state: { key: any; value: string }) => {
-      const element = screen.getByText(state.value);
+      const element = screen.getByText(state.key);
       expect(element).toBeInTheDocument();
     });
   });

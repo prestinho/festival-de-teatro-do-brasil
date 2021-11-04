@@ -8,56 +8,31 @@ import userEvent from "@testing-library/user-event";
 const mockImage = { image: "", caption: "" };
 
 const mockOnChange = jest.fn();
+const errorMsg = "Error";
+let forceValidation = false;
+let maxSize = 5;
 
 describe("tests for component ImageInput", () => {
-  test("Should Render Caption Input", () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+
     render(
       <ImageInput
         image={mockImage}
         placeholderCaption="Placeholder Caption"
-        placeholderImage="Placeholder Image"
+        onChange={mockOnChange}
+        errorMsg={errorMsg}
+        forceValidation={forceValidation}
+        maxSize={maxSize}
       />
     );
+  });
+  test("Should Render Caption Input", () => {
     const caption = screen.getByText("Placeholder Caption");
     expect(caption).toBeVisible();
   });
 
-  test("Should Render Image Input", () => {
-    render(
-      <ImageInput
-        image={mockImage}
-        placeholderCaption="Placeholder Caption"
-        placeholderImage="Placeholder Image"
-      />
-    );
-    const image = screen.getByText("Placeholder Image");
-    expect(image).toBeVisible();
-  });
-
-  test("Should call onChange for image", async () => {
-    render(
-      <ImageInput
-        image={mockImage}
-        placeholderCaption="Placeholder Caption"
-        placeholderImage="Placeholder Image"
-        onChange={mockOnChange}
-      />
-    );
-    const input = screen.getByTestId("image");
-    await userEvent.type(input, "some typed input");
-
-    expect(mockOnChange).toBeCalled();
-  });
-
   test("Should call onChange for caption", async () => {
-    render(
-      <ImageInput
-        image={mockImage}
-        placeholderCaption="Placeholder Caption"
-        placeholderImage="Placeholder Image"
-        onChange={mockOnChange}
-      />
-    );
     const input = screen.getByTestId("caption");
     await userEvent.type(input, "some typed input");
 
