@@ -10,6 +10,7 @@ export interface Play {
   poster: Image;
   images?: Image[] | null;
   sessions: Session[];
+  timestamp?: string;
 }
 export interface Image {
   image: string;
