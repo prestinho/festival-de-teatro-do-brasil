@@ -1,4 +1,17 @@
-import { ChangeEvent, MouseEvent, useCallback, useEffect, useState } from "react";
+import { doc, setDoc } from "@firebase/firestore";
+import {
+  ChangeEvent,
+  MouseEvent,
+  MutableRefObject,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { db, storage } from "../../../apis/firebase";
+import playConverter from "../../../models/Play/firestoreConverter";
+import slugify from "react-slugify";
+
 import {
   emptyImage,
   emptyPlay,
@@ -7,9 +20,13 @@ import {
   Play,
   Session,
 } from "../../../models/Play/Play";
+import { isValidLink } from "../../../services/util";
+import { ref, uploadString, getDownloadURL } from "@firebase/storage";
+import { imgPathProvider } from "../../../services/imgPathProvider";
 
 export const usePlaySubscriptionForm = (): [
   Play,
+  boolean,
   [number, Session][],
   (
     e:
@@ -19,11 +36,19 @@ export const usePlaySubscriptionForm = (): [
   ) => void,
   (image: Image) => void,
   (index: number, session: Session | null) => void,
-  (e: MouseEvent<HTMLAnchorElement>) => void
+  (e: MouseEvent<HTMLAnchorElement>) => void,
+  (e: MouseEvent<HTMLButtonElement>) => void,
+  boolean,
+  any
 ] => {
   const [play, setPlay] = useState<Play>(emptyPlay());
   const [poster, setPoster] = useState<Image>(emptyImage());
   const [sessions, setSessions] = useState<[number, Session][]>([[0, emptySession()]]);
+
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [forceValidation, setForceValidation] = useState<boolean>(false);
+
+  const formRef = useRef<HTMLFormElement>();
 
   useEffect(() => {
     setPlay((prev: Play) => ({
@@ -81,12 +106,72 @@ export const usePlaySubscriptionForm = (): [
     setSessions((prev: [number, Session][]) => [...prev, [index, emptySession()]]);
   };
 
+  //<input ref={input => input && input.focus()}/>
+  const isPlayInvalid = () => {
+    return (
+      play.name === "" ||
+      play.year === "" ||
+      play.about === "" ||
+      play.crew === "" ||
+      play.poster.image === "" ||
+      play.poster.caption === "" ||
+      play.sessions[0].time.day === "" ||
+      play.sessions[0].time.hour === "" ||
+      play.sessions[0].place.address === "" ||
+      (play.teaser && !isValidLink(play.teaser))
+    );
+  };
+
+  const handleSave = async (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setForceValidation(false);
+    if (isLoading) return;
+
+    // validate form
+    setForceValidation(true);
+
+    // validate play object
+    if (isPlayInvalid()) {
+      formRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    // everything ok, lets save!
+    setLoading(true);
+
+    // not sync with server, but i'll take my chances ;-)
+    const id = slugify(play.name + "-" + new Date().getTime());
+
+    // now we first upload our image, then we get its URL and set to a auxiliar play object
+    // after that we upload the auxiliar play and if it goes well, we set our original play
+    const imageRef = ref(storage, `plays/${id}/poster`);
+
+    await uploadString(imageRef, play.poster.image, "data_url")
+      .then(async (snapshot) => {
+        const downloadUrl = imgPathProvider.cleanBasePath(await getDownloadURL(imageRef));
+        const playToBeSaved = play;
+        playToBeSaved.poster.image = downloadUrl;
+
+        await setDoc(doc(db, "plays", id).withConverter(playConverter), playToBeSaved);
+        setPlay(playToBeSaved);
+      })
+      .catch((reason) => {
+        console.error(reason);
+        // TODO: treat this error
+      })
+      .finally(() => setLoading(false));
+  };
+
   return [
     play,
+    isLoading,
     sessions,
     onChangeHandler,
     onChangeImageHandler,
     onChangeSessionHandler,
     addSessionHandler,
+    handleSave,
+    forceValidation,
+    formRef,
   ];
 };

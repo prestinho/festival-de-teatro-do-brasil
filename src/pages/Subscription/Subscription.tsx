@@ -1,13 +1,21 @@
 import React from "react";
 
-import { Container, H3, Sessions, AddButton } from "./styles";
+import {
+  Container,
+  H3,
+  Sessions,
+  AddButton,
+  Row,
+  SaveButton,
+  StyledLoader,
+} from "./styles";
 import { PageContainer } from "../../styles/PageStyles";
 import { states } from "../../models/State/states";
 import LabeledInput from "../../components/Forms/LabeledInput/LabeledInput";
 import Select from "../../components/Forms/Select/Select";
 import SessionInputs from "./components/SessionInputs/SessionInputs";
 import { Session } from "../../models/Play/Play";
-import ImageInput from "./components/ImageInput/ImageInput";
+import ImageInput from "../../components/Forms/ImageInput/ImageInput";
 import { usePlaySubscriptionForm } from "./hooks/usePlaySubscriptionForm";
 
 export interface Props {}
@@ -15,94 +23,126 @@ export interface Props {}
 const Subscription: React.FC<Props> = () => {
   const [
     play,
+    loading,
     sessions,
     onChangeHandler,
     onChangeImageHandler,
     onChangeSessionHandler,
     addSessionHandler,
+    handleSave,
+    forceValidation,
+    formRef,
   ] = usePlaySubscriptionForm();
 
   return (
-    <PageContainer style={{ display: "flex", justifyContent: "center" }}>
-      <Container>
-        <H3>Inscrever Espetáculo no Festival</H3>
-        <form>
-          <LabeledInput
-            id="name"
-            type="text"
-            placeholder="Nome do espetáculo"
-            value={play.name}
-            onChange={onChangeHandler}
-          />
-          <LabeledInput
-            id="group"
-            type="text"
-            placeholder="Grupo (se houver)"
-            value={play.group}
-            onChange={onChangeHandler}
-          />
-
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+    <StyledLoader active={loading} spinner>
+      <PageContainer style={{ display: "flex", justifyContent: "center" }}>
+        <Container>
+          <H3>Inscrever Espetáculo no Festival</H3>
+          <form ref={formRef}>
             <LabeledInput
-              id="year"
-              type="number"
-              placeholder="Ano de criação do espetáculo"
-              value={play.year}
+              id="name"
+              type="text"
+              placeholder="Nome do espetáculo"
+              value={play.name}
               onChange={onChangeHandler}
+              required
+              errorMsg={"Eita, o nome ficou em branco."}
+              forceValidation={forceValidation}
             />
-            <Select
-              id="state"
-              label="Estado"
-              options={states}
+            <LabeledInput
+              id="group"
+              type="text"
+              placeholder="Grupo (se houver)"
+              value={play.group}
               onChange={onChangeHandler}
+              forceValidation={forceValidation}
             />
-          </div>
 
-          <LabeledInput
-            id="about"
-            type="textarea"
-            placeholder="Sobre o espetáculo"
-            value={play.about}
-            onChange={onChangeHandler}
-          />
-
-          <LabeledInput
-            id="crew"
-            type="textarea"
-            placeholder="Ficha técnica"
-            value={play.crew}
-            onChange={onChangeHandler}
-          />
-
-          <LabeledInput
-            id="teaser"
-            type="text"
-            placeholder="Link com teaser do espetáculo"
-            value={play.teaser}
-            onChange={onChangeHandler}
-          />
-
-          <ImageInput
-            image={play.poster}
-            onChange={onChangeImageHandler}
-            placeholderCaption="Legenda para o poster (para acessibilidade)"
-            placeholderImage="Link para imagem com poster do espetáculo"
-          />
-
-          <Sessions>
-            {sessions.map(([index, session]: [number, Session]) => (
-              <SessionInputs
-                key={index}
-                index={index}
-                session={session}
-                onChange={onChangeSessionHandler}
+            <Row>
+              <LabeledInput
+                id="year"
+                type="number"
+                placeholder="Ano de criação do espetáculo"
+                value={play.year}
+                onChange={onChangeHandler}
+                required
+                errorMsg={"O ano ficou errado, bença."}
+                min={1950}
+                max={2022}
+                forceValidation={forceValidation}
               />
-            ))}
-            <AddButton onClick={addSessionHandler}>Adicionar nova sessão</AddButton>
-          </Sessions>
-        </form>
-      </Container>
-    </PageContainer>
+              <Select
+                id="state"
+                label="Estado"
+                options={states}
+                onChange={onChangeHandler}
+              />
+            </Row>
+
+            <LabeledInput
+              id="teaser"
+              type="text"
+              placeholder="Link com teaser do espetáculo"
+              value={play.teaser}
+              onChange={onChangeHandler}
+              link
+              errorMsg={"Deu ruim no formato desse link. Checa se é um link mesmo."}
+              forceValidation={forceValidation}
+            />
+
+            <ImageInput
+              image={play.poster}
+              onChange={onChangeImageHandler}
+              placeholderCaption="Legenda para o poster (para acessibilidade)"
+              placeholderImage="Link para imagem com poster do espetáculo"
+              errorMsg="Escreve um pouquinho sobre a imagem para quem usa leitor de tela"
+              forceValidation={forceValidation}
+              maxSize={5}
+            />
+
+            <LabeledInput
+              id="about"
+              type="textarea"
+              placeholder="Sobre o espetáculo"
+              value={play.about}
+              onChange={onChangeHandler}
+              required
+              errorMsg={
+                "De uma adiantada de sobre o que é o espetáculo, to doida para saber :-)"
+              }
+              forceValidation={forceValidation}
+            />
+
+            <LabeledInput
+              id="crew"
+              type="textarea"
+              placeholder="Ficha técnica"
+              value={play.crew}
+              onChange={onChangeHandler}
+              required
+              errorMsg={"Faltou a ficha! Pra dar os créditos"}
+              forceValidation={forceValidation}
+            />
+
+            <Sessions>
+              {sessions.map(([index, session]: [number, Session]) => (
+                <SessionInputs
+                  key={index}
+                  index={index}
+                  session={session}
+                  onChange={onChangeSessionHandler}
+                  forceValidation={forceValidation}
+                />
+              ))}
+              <AddButton onClick={addSessionHandler}>Adicionar nova sessão</AddButton>
+            </Sessions>
+
+            <SaveButton onClick={handleSave}>Realizar Inscrição</SaveButton>
+          </form>
+        </Container>
+      </PageContainer>
+    </StyledLoader>
   );
 };
 

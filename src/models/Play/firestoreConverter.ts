@@ -1,18 +1,19 @@
 import {
   DocumentData,
   QueryDocumentSnapshot,
+  serverTimestamp,
   SnapshotOptions,
 } from "@firebase/firestore";
 import { Image, Place, Play, Time, Session } from "./Play";
 
 const playConverter = {
   toFirestore(play: Play): DocumentData {
-    return {};
+    return {
+      ...play,
+      timestamp: serverTimestamp(),
+    };
   },
-  fromFirestore(
-    snapshot: QueryDocumentSnapshot,
-    options: SnapshotOptions
-  ): Play {
+  fromFirestore(snapshot: QueryDocumentSnapshot, options: SnapshotOptions): Play {
     const playData = snapshot.data(options)!;
 
     const poster: Image = {
@@ -28,8 +29,8 @@ const playConverter = {
         address: session.place.address,
       };
       const time: Time = {
-        day: session.day,
-        hour: session.hour,
+        day: session.time.day,
+        hour: session.time.hour,
       };
       sessions.push({
         time: time,

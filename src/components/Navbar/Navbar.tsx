@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { Container, Img, Girl, Link } from "./styles";
 
@@ -23,4 +23,4 @@ const Navbar: React.FC<Props> = ({ hasNavigated }) => {
   );
 };
 
-export default Navbar;
+export default memo(Navbar);

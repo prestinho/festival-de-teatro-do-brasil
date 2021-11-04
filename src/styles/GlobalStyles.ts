@@ -13,8 +13,9 @@ export default createGlobalStyle`
     --light-gray: #dedede;
     --gray: #777777;
     --dark-gray: #444444;
+    --pink: #ff7076;
 
-    --card-width: 320px;
+    --card-width: ${process.env.REACT_APP_CARD_WIDTH}px;
     --card-border: 10px;
 }
 

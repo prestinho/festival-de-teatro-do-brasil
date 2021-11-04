@@ -16,9 +16,15 @@ export interface Props {
   index: number;
   session: Session;
   onChange?: (index: number, session: Session | null) => void;
+  forceValidation?: boolean;
 }
 
-const SessionInputs: React.FC<Props> = ({ index, onChange, session }) => {
+const SessionInputs: React.FC<Props> = ({
+  index,
+  onChange,
+  session,
+  forceValidation,
+}) => {
   const [myTime, setMyTime] = useState<Time>(session.time);
   const [myPlace, setMyPlace] = useState<Place>(session.place);
 
@@ -72,6 +78,9 @@ const SessionInputs: React.FC<Props> = ({ index, onChange, session }) => {
         max="2022-03-27"
         value={myTime.day}
         onChange={sessionOnChangeHandler}
+        required
+        errorMsg={"Esse dia num tem festival não :-("}
+        forceValidation={forceValidation}
       />
       <LabeledInput
         id={`session-hour-${index}`}
@@ -81,11 +90,14 @@ const SessionInputs: React.FC<Props> = ({ index, onChange, session }) => {
         style={{ paddingLeft: "4rem" }}
         value={myTime.hour}
         onChange={sessionOnChangeHandler}
+        required
+        errorMsg={"Diz a hora consagrade, assim não tem como eu te ajudar."}
+        forceValidation={forceValidation}
       />
       <LabeledInput
         id={`session-place-${index}`}
         name="place-name"
-        type="input"
+        type="text"
         placeholder="Local"
         value={myPlace.name}
         onChange={sessionOnChangeHandler}
@@ -93,10 +105,13 @@ const SessionInputs: React.FC<Props> = ({ index, onChange, session }) => {
       <LabeledInput
         id={`session-address-${index}`}
         name="place-address"
-        type="input"
+        type="text"
         placeholder="Endereço"
         value={myPlace.address}
         onChange={sessionOnChangeHandler}
+        required
+        errorMsg={"Diga o lugar certinho pro pessoal chegar sem problema :-)"}
+        forceValidation={forceValidation}
       />
     </Container>
   );

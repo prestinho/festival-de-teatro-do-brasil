@@ -4,7 +4,7 @@ export const CustomSelect = styled.select`
   margin-left: 1rem;
   background: none;
   //border-bottom: 2px solid var(--light-gray);
-  font-size: 1rem;
+  font-size: 0.8rem;
 
   &:focus {
     //border-bottom: 2px solid var(--quaternary-color);
@@ -18,4 +18,3 @@ export const Label = styled.label`
   color: #7d7d7d;
   font-size: 0.8rem;
 `;
-

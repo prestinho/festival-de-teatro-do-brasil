@@ -10,6 +10,10 @@ export const CustomInput = styled.input`
     border-bottom: 2px solid var(--quaternary-color);
     outline: none;
   }
+
+  &.error {
+    border-bottom: 2px solid var(--pink);
+  }
 `;
 
 export const TextArea = styled.textarea`
@@ -28,6 +32,18 @@ export const TextArea = styled.textarea`
     border-bottom: 2px solid var(--quaternary-color);
     outline: none;
   }
+
+  &.error {
+    border-bottom: 2px solid var(--pink);
+  }
+`;
+
+export const ErrorLabel = styled.a`
+  color: var(--pink);
+  font-size: 0.6rem;
+  /* position: absolute;
+  left: 0;
+  bottom: -1rem; */
 `;
 
 export const FloatingLabel = styled.div`
@@ -43,17 +59,11 @@ export const FloatingLabelText = styled.label`
   top: 0.4rem;
   transition: 0.3s ease all;
 
-  ${CustomInput}:focus ~ &,  
- ${CustomInput}:valid ~ &,
- ${TextArea}:focus ~ &,
- ${TextArea}:valid ~ & {
-    top: -1rem;
-    left: 5px;
-    font-size: 0.6rem;
-    color: var(--quaternary-color);
-  }
-
-  ${TextArea}:focus ~ & {
+  ${CustomInput}[type=number].error ~ &,
+  ${CustomInput}:focus ~ &,
+  ${CustomInput}:valid ~ &,
+  ${TextArea}:focus ~ &,
+  ${TextArea}:valid ~ & {
     top: -1rem;
     left: 5px;
     font-size: 0.6rem;

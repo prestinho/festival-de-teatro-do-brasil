@@ -1,8 +1,15 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useEffect, useState, useCallback, useRef } from "react";
 
-import { CustomInput, FloatingLabel, FloatingLabelText, TextArea } from "./styles";
+import {
+  CustomInput,
+  FloatingLabel,
+  FloatingLabelText,
+  TextArea,
+  ErrorLabel,
+} from "./styles";
 
 import { FormField } from "../styles";
+import { isValidLink } from "../../../services/util";
 
 export interface PropsLabeledInput {
   id: string;
@@ -17,6 +24,10 @@ export interface PropsLabeledInput {
   max?: any;
   onChange?: (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => any;
   testId?: string;
+  link?: boolean;
+  required?: boolean;
+  errorMsg?: string;
+  forceValidation?: boolean;
 }
 const LabeledInput: React.FC<PropsLabeledInput> = ({
   id,
@@ -31,7 +42,55 @@ const LabeledInput: React.FC<PropsLabeledInput> = ({
   max,
   onChange,
   testId,
+  link,
+  required,
+  errorMsg,
+  forceValidation,
 }) => {
+  const [error, setError] = useState<boolean>(false);
+
+  const validate = useCallback(
+    (val: string): boolean => {
+      let valid = true;
+      const setInvalid = (isInvalid: boolean) => {
+        if (isInvalid) valid = false;
+      };
+
+      if (required) setInvalid(val === "");
+      if (link) setInvalid(val !== "" && !isValidLink(val));
+
+      if (type === "number") {
+        if (min) setInvalid(parseInt(val) < min);
+        if (max) setInvalid(parseInt(val) > max);
+        if (max && max) setInvalid(parseInt(val) < min || parseInt(val) > max);
+        if ((min || max) && isNaN(parseInt(val))) setInvalid(true);
+      } else if (type === "date") {
+        const d = new Date(val);
+        if (min) setInvalid(d < new Date(min));
+        if (max) setInvalid(d > max);
+        if (min && max) setInvalid(d < new Date(min) || d > new Date(max));
+        if ((min || max) && isNaN(d.getTime())) setInvalid(true);
+      }
+
+      setError(!valid);
+      return valid;
+    },
+    [link, max, min, required, type]
+  );
+
+  const validateAndChange = (
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    validate(e.target.value);
+    onChange?.(e);
+  };
+
+  useEffect(() => {
+    if (forceValidation) {
+      validate(value);
+    }
+  }, [forceValidation, value, validate]);
+
   return (
     <FormField>
       <FloatingLabel>
@@ -44,8 +103,9 @@ const LabeledInput: React.FC<PropsLabeledInput> = ({
             cols={cols}
             style={style}
             value={value}
-            onChange={onChange}
+            onChange={validateAndChange}
             data-testid={testId}
+            className={error ? "error" : ""}
           />
         ) : (
           <CustomInput
@@ -57,11 +117,15 @@ const LabeledInput: React.FC<PropsLabeledInput> = ({
             min={min}
             max={max}
             value={value}
-            onChange={onChange}
+            onChange={validateAndChange}
             data-testid={testId}
+            className={error ? "error" : ""}
           />
         )}
-        <FloatingLabelText>{placeholder}</FloatingLabelText>
+        <FloatingLabelText className={error ? "error" : ""}>
+          {placeholder}
+        </FloatingLabelText>
+        {error && <ErrorLabel>{errorMsg}</ErrorLabel>}
       </FloatingLabel>
     </FormField>
   );
