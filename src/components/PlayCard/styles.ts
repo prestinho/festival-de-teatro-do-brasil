@@ -6,10 +6,10 @@ type PosterType = {
 
 export const Poster = styled.div<PosterType>`
   width: 100%;
-  height: calc(var(--card-width)*0.7);
+  height: calc(var(--card-width) * 0.7);
   border-radius: var(--card-border) var(--card-border) 0 0;
   background-size: cover;
-  background-image: ${ props => `url(${props.bgImg})` };
+  background-image: ${(props) => `url(${props.bgImg})`};
   background-color: #a77bfd50;
   background-blend-mode: screen;
   transition: background-color 0.5s;
@@ -19,7 +19,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--white); 
+  background-color: var(--white);
   box-shadow: rgb(0 0 0 / 24%) 0px 8px 12px;
   cursor: pointer;
 
@@ -45,14 +45,14 @@ export const Title = styled.div`
   background-size: 100% 95%;
   padding: 8px 0;
 
-padding: 1em;
-h3 {
-  font-size: 1.4rem;
- }
- span{
-   font-size: 0.75rem;
-   color: var(--gray);
- }
+  padding: 1em;
+  h3 {
+    font-size: 1.4rem;
+  }
+  span {
+    font-size: 0.75rem;
+    color: var(--gray);
+  }
 `;
 
 export const Info = styled.div`
@@ -71,4 +71,3 @@ export const Actions = styled.div`
   display: flex;
   justify-content: right;
 `;
-

@@ -6,18 +6,17 @@ import { states } from "../../../models/State/states";
 import { Container, ContainerFooter } from "./styles";
 
 export interface Props {
-  filters: {state: string},
-  setFilters: Function
+  filters: { state: string };
+  setFilters: Function;
 }
 
-const FiltersContainer: React.FC<Props> = ({filters, setFilters}) => {
-
+const FiltersContainer: React.FC<Props> = ({ filters, setFilters }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFilters((prevState : any) => ({
+    setFilters((prevState: any) => ({
       ...prevState,
       [event.target.name]: event.target.value,
     }));
-  }
+  };
 
   return (
     <Container data-testid="filters">
