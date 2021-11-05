@@ -61,7 +61,7 @@ export const emptyPlay = (): Play => ({
   id: "",
   name: "",
   group: "",
-  state: "",
+  state: "AL",
   year: "",
   about: "",
   teaser: "",

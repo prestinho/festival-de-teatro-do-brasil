@@ -18,11 +18,9 @@ import { Session } from "../../models/Play/Play";
 import ImageInput from "../../components/Forms/ImageInput/ImageInput";
 import { usePlaySubscriptionForm } from "./hooks/usePlaySubscriptionForm";
 
-export interface Props {
-  pageRef?: any;
-}
+export interface Props {}
 
-const Subscription: React.FC<Props> = ({ pageRef }) => {
+const Subscription: React.FC<Props> = () => {
   const [
     play,
     loading,
@@ -33,7 +31,7 @@ const Subscription: React.FC<Props> = ({ pageRef }) => {
     addSessionHandler,
     handleSave,
     forceValidation,
-  ] = usePlaySubscriptionForm(pageRef);
+  ] = usePlaySubscriptionForm();
 
   return (
     <StyledLoader active={loading} spinner>
@@ -77,6 +75,7 @@ const Subscription: React.FC<Props> = ({ pageRef }) => {
                 id="state"
                 label="Estado"
                 options={states}
+                selected={play.state}
                 onChange={onChangeHandler}
               />
             </Row>
