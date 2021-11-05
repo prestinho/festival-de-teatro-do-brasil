@@ -104,7 +104,7 @@ const LabeledInput: React.FC<PropsLabeledInput> = ({
             style={style}
             value={value}
             onChange={validateAndChange}
-            data-testid={testId}
+            data-testid={testId ?? id}
             className={error ? "error" : ""}
           />
         ) : (
@@ -118,7 +118,7 @@ const LabeledInput: React.FC<PropsLabeledInput> = ({
             max={max}
             value={value}
             onChange={validateAndChange}
-            data-testid={testId}
+            data-testid={testId ?? id}
             className={error ? "error" : ""}
           />
         )}

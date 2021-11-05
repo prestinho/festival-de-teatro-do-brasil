@@ -32,7 +32,6 @@ const PlayCard: React.FC<Props> = ({ play }) => {
       <Info>
         {play.sessions.map((session, key) => (
           <PlaySession key={key}>
-            {console.log(session)}
             <div>
               Dia {session.time?.day?.split("-")[2]} - {session.time?.hour}
             </div>

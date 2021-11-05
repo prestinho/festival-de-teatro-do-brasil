@@ -4,6 +4,7 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import ImageInput from "../ImageInput";
 import userEvent from "@testing-library/user-event";
+import { waitFor } from "@testing-library/dom";
 
 const mockImage = { image: "", caption: "" };
 
@@ -32,10 +33,20 @@ describe("tests for component ImageInput", () => {
     expect(caption).toBeVisible();
   });
 
+  test("Should Render File Upload Div", () => {
+    const caption = screen.getByTestId("FileUploadDiv");
+    expect(caption).toBeVisible();
+  });
+
   test("Should call onChange for caption", async () => {
     const input = screen.getByTestId("caption");
     await userEvent.type(input, "some typed input");
 
-    expect(mockOnChange).toBeCalled();
+    await waitFor(() => expect(mockOnChange).toBeCalled(), { timeout: 1000 });
+  });
+
+  test("Should Render File Upload Div", () => {
+    const caption = screen.getByTestId("FileUploadDiv");
+    expect(caption).toBeVisible();
   });
 });

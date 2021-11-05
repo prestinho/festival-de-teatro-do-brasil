@@ -91,7 +91,10 @@ const ImageInput: React.FC<Props> = ({
         accept="image/*"
       />
       <Label selectedFile={selectedFile !== ""}>Poster do Espetáculo</Label>
-      <FileUploadDiv onClick={() => fileInputRef?.current?.click()}>
+      <FileUploadDiv
+        data-testId="FileUploadDiv"
+        onClick={() => fileInputRef?.current?.click()}
+      >
         {selectedFile ? (
           <Img src={selectedFile.toString()} alt="Imagem selecionada" />
         ) : (
