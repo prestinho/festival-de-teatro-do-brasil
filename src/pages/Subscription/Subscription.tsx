@@ -1,14 +1,6 @@
 import React from "react";
 
-import {
-  Container,
-  H3,
-  Sessions,
-  AddButton,
-  Row,
-  SaveButton,
-  StyledLoader,
-} from "./styles";
+import { Container, H3, Sessions, AddButton, Row, SaveButton } from "./styles";
 import { PageContainer } from "../../styles/PageStyles";
 import { states } from "../../models/State/states";
 import LabeledInput from "../../components/Forms/LabeledInput/LabeledInput";
@@ -17,6 +9,7 @@ import SessionInputs from "./components/SessionInputs/SessionInputs";
 import { Session } from "../../models/Play/Play";
 import ImageInput from "../../components/Forms/ImageInput/ImageInput";
 import { usePlaySubscriptionForm } from "./hooks/usePlaySubscriptionForm";
+import { StyledLoader } from "../../components/StyledLoading/StyledLoading";
 
 export interface Props {}
 

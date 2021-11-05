@@ -137,12 +137,6 @@ export const usePlaySubscriptionForm = (): [
       };
 
       waitFor(scrollToError);
-      //getAttribute('ref')?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-      // window.scrollTo({
-      //   top: document.getElementsByClassName("error-msg")?.[0]?.getBoundingClientRect()
-      //     .top,
-      //   behavior: "smooth",
-      // });
       return;
     }
 

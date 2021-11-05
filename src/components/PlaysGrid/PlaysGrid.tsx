@@ -3,18 +3,22 @@ import PlayCard from "../PlayCard/PlayCard";
 import { Play } from "../../models/Play/Play";
 
 import { Container } from "./styles";
+import { StyledLoader } from "../StyledLoading/StyledLoading";
 
 export interface Props {
-   plays : Play[]
+  plays: Play[];
+  loading: boolean;
 }
 
-const PlaysGrid: React.FC<Props> = ({ plays }) => {
+const PlaysGrid: React.FC<Props> = ({ plays, loading }) => {
   return (
-    <Container>
-      {plays.map((play: Play) => (
-        <PlayCard key={play.id} play={play} />
-      ))}
-    </Container>
+    <StyledLoader active={loading} spinner>
+      <Container>
+        {plays.map((play: Play) => (
+          <PlayCard key={play.id} play={play} />
+        ))}
+      </Container>
+    </StyledLoader>
   );
 };
 

@@ -11,6 +11,17 @@ export interface Props {
 const StateFilter: React.FC<Props> = ({ states, checked, handleChange }) => {
   return (
     <Container>
+      <LabeledRadio>
+        <Radio
+          type="radio"
+          id="all"
+          name="state"
+          value={""}
+          checked={checked === ""}
+          onChange={handleChange}
+        />
+        <label htmlFor="all">TODOS</label>
+      </LabeledRadio>
       {states.map((state: { key: any; value: string }) => (
         <LabeledRadio key={state.key}>
           <Radio
