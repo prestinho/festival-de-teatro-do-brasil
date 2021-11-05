@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState, useCallback, useRef } from "react";
+import React, { ChangeEvent, useEffect, useState, useCallback } from "react";
 
 import {
   CustomInput,
@@ -6,6 +6,7 @@ import {
   FloatingLabelText,
   TextArea,
   ErrorLabel,
+  RefDiv,
 } from "./styles";
 
 import { FormField } from "../styles";
@@ -93,6 +94,7 @@ const LabeledInput: React.FC<PropsLabeledInput> = ({
 
   return (
     <FormField>
+      {error && <RefDiv className="error-ref" />}
       <FloatingLabel>
         {type === "textarea" ? (
           <TextArea

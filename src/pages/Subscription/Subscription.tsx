@@ -18,9 +18,11 @@ import { Session } from "../../models/Play/Play";
 import ImageInput from "../../components/Forms/ImageInput/ImageInput";
 import { usePlaySubscriptionForm } from "./hooks/usePlaySubscriptionForm";
 
-export interface Props {}
+export interface Props {
+  pageRef?: any;
+}
 
-const Subscription: React.FC<Props> = () => {
+const Subscription: React.FC<Props> = ({ pageRef }) => {
   const [
     play,
     loading,
@@ -31,15 +33,14 @@ const Subscription: React.FC<Props> = () => {
     addSessionHandler,
     handleSave,
     forceValidation,
-    formRef,
-  ] = usePlaySubscriptionForm();
+  ] = usePlaySubscriptionForm(pageRef);
 
   return (
     <StyledLoader active={loading} spinner>
       <PageContainer style={{ display: "flex", justifyContent: "center" }}>
         <Container>
           <H3>Inscrever Espetáculo no Festival</H3>
-          <form ref={formRef}>
+          <form>
             <LabeledInput
               id="name"
               type="text"

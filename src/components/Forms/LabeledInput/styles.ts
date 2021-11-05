@@ -70,3 +70,8 @@ export const FloatingLabelText = styled.label`
     color: var(--quaternary-color);
   }
 `;
+
+export const RefDiv = styled.div`
+  position: relative;
+  top: -80px;
+`;

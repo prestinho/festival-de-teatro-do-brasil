@@ -20,11 +20,13 @@ import {
   Play,
   Session,
 } from "../../../models/Play/Play";
-import { isValidLink } from "../../../services/util";
+import { isValidLink, waitFor } from "../../../services/util";
 import { ref, uploadString, getDownloadURL } from "@firebase/storage";
 import { imgPathProvider } from "../../../services/imgPathProvider";
 
-export const usePlaySubscriptionForm = (): [
+export const usePlaySubscriptionForm = (
+  pageRef: any
+): [
   Play,
   boolean,
   [number, Session][],
@@ -38,8 +40,7 @@ export const usePlaySubscriptionForm = (): [
   (index: number, session: Session | null) => void,
   (e: MouseEvent<HTMLAnchorElement>) => void,
   (e: MouseEvent<HTMLButtonElement>) => void,
-  boolean,
-  any
+  boolean
 ] => {
   const [play, setPlay] = useState<Play>(emptyPlay());
   const [poster, setPoster] = useState<Image>(emptyImage());
@@ -47,8 +48,6 @@ export const usePlaySubscriptionForm = (): [
 
   const [isLoading, setLoading] = useState<boolean>(false);
   const [forceValidation, setForceValidation] = useState<boolean>(false);
-
-  const formRef = useRef<HTMLFormElement>();
 
   useEffect(() => {
     setPlay((prev: Play) => ({
@@ -132,7 +131,20 @@ export const usePlaySubscriptionForm = (): [
 
     // validate play object
     if (isPlayInvalid()) {
-      formRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      const scrollToError = () => {
+        document
+          .getElementsByClassName("error-ref")?.[0]
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (!document.getElementsByClassName("error-ref")) throw "not yet";
+      };
+
+      waitFor(scrollToError);
+      //getAttribute('ref')?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      // window.scrollTo({
+      //   top: document.getElementsByClassName("error-msg")?.[0]?.getBoundingClientRect()
+      //     .top,
+      //   behavior: "smooth",
+      // });
       return;
     }
 
@@ -172,6 +184,5 @@ export const usePlaySubscriptionForm = (): [
     addSessionHandler,
     handleSave,
     forceValidation,
-    formRef,
   ];
 };

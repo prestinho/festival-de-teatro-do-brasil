@@ -11,6 +11,7 @@ import { Image } from "../../../models/Play/Play";
 import { CameraOutline } from "@styled-icons/evaicons-outline/CameraOutline";
 
 import { Container, FileUploadDiv, Img, Label, ErrorLabel } from "./styles";
+import { RefDiv } from "../LabeledInput/styles";
 
 export interface Props {
   image: Image;
@@ -83,6 +84,7 @@ const ImageInput: React.FC<Props> = ({
 
   return (
     <Container>
+      {imageError && <RefDiv className="error-ref" />}
       <input
         type="file"
         hidden
@@ -92,7 +94,7 @@ const ImageInput: React.FC<Props> = ({
       />
       <Label selectedFile={selectedFile !== ""}>Poster do Espetáculo</Label>
       <FileUploadDiv
-        data-testId="FileUploadDiv"
+        data-testid="FileUploadDiv"
         onClick={() => fileInputRef?.current?.click()}
       >
         {selectedFile ? (

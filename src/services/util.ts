@@ -8,3 +8,30 @@ export const isValidLink = (link: string | undefined): boolean => {
   }
   return false;
 };
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export async function waitFor(fn: any, timeout = 500): Promise<void> {
+  const step = 10;
+  let timeSpent = 0;
+  let timedOut = false;
+
+  while (true) {
+    try {
+      await sleep(step);
+      timeSpent += step;
+      fn();
+      break;
+    } catch {}
+    if (timeSpent >= timeout) {
+      timedOut = true;
+      break;
+    }
+  }
+
+  // if (timedOut) {
+  //   new Error("timeout");
+  // }
+}
