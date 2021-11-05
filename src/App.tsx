@@ -10,11 +10,11 @@ const App: React.FC = () => {
   const hasNavigated = useNavigation();
 
   return (
-    <>
+    <div>
       <GlobalStyles />
       <Navbar hasNavigated={hasNavigated} />
-      <Subscription />
-    </>
+      <Home />
+    </div>
   );
 };
 

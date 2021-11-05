@@ -24,9 +24,7 @@ import { isValidLink, waitFor } from "../../../services/util";
 import { ref, uploadString, getDownloadURL } from "@firebase/storage";
 import { imgPathProvider } from "../../../services/imgPathProvider";
 
-export const usePlaySubscriptionForm = (
-  pageRef: any
-): [
+export const usePlaySubscriptionForm = (): [
   Play,
   boolean,
   [number, Session][],
