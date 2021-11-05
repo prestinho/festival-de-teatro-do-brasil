@@ -1,5 +1,7 @@
 import "@testing-library/jest-dom";
 
+import "@testing-library/react/cleanup-afterEach";
+
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import LabeledInput from "../LabeledInput";
@@ -31,6 +33,27 @@ describe("tests for component LabeledInput", () => {
 
       expect(label).toBeVisible();
       expect(input).toHaveValue("some typed input");
+    });
+  });
+
+  describe("tests for onChange", () => {
+    test("Should call onChange", async () => {
+      const mockOnChange = jest.fn();
+      render(
+        <LabeledInput
+          id="id"
+          placeholder="Place Holder"
+          type="text"
+          testId="input-test-id"
+          onChange={mockOnChange}
+        />
+      );
+
+      const input = screen.getByTestId("input-test-id");
+
+      await userEvent.type(input, "some typed input");
+
+      expect(mockOnChange).toBeCalled();
     });
   });
 
