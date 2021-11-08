@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 60vh;
+  max-height: 500px;
   display: flex;
-  flex-direction: column;
+  //flex-direction: column;
   justify-items: center;
   align-items: center;
   margin-top: 60px;
@@ -11,7 +12,30 @@ export const Container = styled.div`
   @media (min-width: 768px) {
     margin-top: 0px;
     align-items: flex-start;
+    justify-content: center;
     margin-left: 5vw;
+  }
+`;
+
+export const Year = styled.div`
+  display: none;
+  @media (min-width: 665px) {
+    display: block;
+    align-self: center;
+    line-height: 0.55;
+    color: #ffd549;
+    font-weight: 800;
+    position: relative;
+    font-size: 8rem;
+    padding-left: 2rem;
+  }
+  @media (min-width: 768px) {
+    font-size: 10rem;
+    padding-left: 2rem;
+  }
+  @media (min-width: 980px) {
+    font-size: 13rem;
+    left: 3rem;
   }
 `;
 
@@ -21,9 +45,9 @@ export const H1 = styled.h1`
 `;
 
 export const Dias = styled.div`
-display: flex;
-justify-items: center;
-padding-left: 20px;
+  display: flex;
+  justify-items: center;
+  padding-left: 20px;
   h2 {
     line-height: 2rem;
     background: var(--quinternary-color);
@@ -41,9 +65,9 @@ padding-left: 20px;
   }
 
   @media (min-width: 768px) {
-    padding-left: 40px;
+    //padding-left: 40px;
     h2 {
-        line-height: 2rem;
+      line-height: 2rem;
     }
   }
 `;

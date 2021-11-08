@@ -3,6 +3,8 @@ import LoadingOverlay from "react-loading-overlay-ts";
 
 export const StyledLoader = styled(LoadingOverlay)`
   overflow: hidden;
+  display: flex;
+  justify-content: center;
   ._loading_overlay_overlay {
     background: linear-gradient(
       108deg,

@@ -53,10 +53,10 @@ h1 {
     -moz-text-fill-color: transparent;
 
     @media(min-width: 768px) {
-        font-size: 4rem;
-        line-height: 4rem;
+        font-size: 3rem;
+        line-height: 3rem;
     }
-    @media(min-width: 950px) {
+    @media(min-width: 1030px) {
         font-size: 5rem;
         line-height: 4.5rem;
     }
