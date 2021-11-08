@@ -1,8 +1,9 @@
 import React, { memo } from "react";
 
-import { Container, Img, Girl, Link } from "./styles";
+import { Container, Img, Girl, MenuItem } from "./styles";
 
 import GirlImg from "../../assets/imgs/ftb.png";
+import { Link } from "react-router-dom";
 
 export interface Props {
   hasNavigated?: boolean;
@@ -14,11 +15,15 @@ const Navbar: React.FC<Props> = ({ hasNavigated }) => {
       <Girl>
         <Img src={GirlImg} />
       </Girl>
-      <Link hasNavigated={hasNavigated}>Home</Link>
-      <Link hasNavigated={hasNavigated}>O Festival</Link>
-      <Link hasNavigated={hasNavigated}>O PAVIO</Link>
-      <Link hasNavigated={hasNavigated}>Inscrições</Link>
-      <Link hasNavigated={hasNavigated}>Programação</Link>
+      <MenuItem hasNavigated={hasNavigated}>
+        <Link to="/">Home</Link>
+      </MenuItem>
+      <MenuItem hasNavigated={hasNavigated}>O Festival</MenuItem>
+      <MenuItem hasNavigated={hasNavigated}>O PAVIO</MenuItem>
+      <MenuItem hasNavigated={hasNavigated}>
+        <Link to="/inscricao">Inscrição</Link>
+      </MenuItem>
+      <MenuItem hasNavigated={hasNavigated}>Programação</MenuItem>
     </Container>
   );
 };

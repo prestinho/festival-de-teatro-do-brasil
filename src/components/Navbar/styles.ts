@@ -16,8 +16,7 @@ export const Container = styled.div<Props>`
     justify-content: space-around;
     padding-left: 0px;
     height: ${(props) => (props.hasNavigated ? "60px" : "80px")};
-    background-color: ${(props) =>
-      props.hasNavigated ? "var(--primary-color)" : ""};
+    background-color: ${(props) => (props.hasNavigated ? "var(--primary-color)" : "")};
     opacity: 0.9;
     transition: all easy 1s;
     transition: background-color 0.5s;
@@ -31,9 +30,10 @@ export const Img = styled.img`
 
 export const Girl = styled.div``;
 
-export const Link = styled.div<Props>`
+export const MenuItem = styled.div<Props>`
   transition: ease all 0.5s;
   display: none;
+
   @media (min-width: 768px) {
     display: block;
     padding-top: 1.2rem;
@@ -41,11 +41,18 @@ export const Link = styled.div<Props>`
     text-transform: uppercase;
     font-weight: 800;
     cursor: pointer;
+    //opacity: ${(props) => (props.hasNavigated ? "1" : "0")};
+  }
 
-    &:hover { 
-        color: black;
+  a {
+    text-decoration: none;
+
+    &:hover {
+      color: black;
     }
 
-    //opacity: ${(props) => (props.hasNavigated ? "1" : "0")};
+    &:active {
+      color: var(--quaternary-color);
+    }
   }
 `;

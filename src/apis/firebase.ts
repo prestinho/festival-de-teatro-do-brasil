@@ -2,6 +2,7 @@ import { initializeApp, getApp, getApps } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "@firebase/firestore";
 import { getStorage } from "@firebase/storage";
+import { GoogleAuthProvider, getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -19,4 +20,9 @@ const analytics = getAnalytics(app);
 const db = getFirestore();
 const storage = getStorage();
 
-export { app, analytics, db, storage };
+// Auth
+const googleProvider = new GoogleAuthProvider();
+const auth = getAuth();
+auth.languageCode = "pt";
+
+export { app, analytics, db, storage, auth, googleProvider };
