@@ -28,6 +28,12 @@ export const Card = styled.div`
   border-radius: var(--card-border);
   box-shadow: 5px black;
 
+  // This is a bug fix: card "blinked transparent" after hover +
+  -webkit-transform: translateZ(0);
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+  // This is a bug fix: card "blinked transparent" after hover -
+
   transition: all ease 0.2s;
   transform: scale(0.95);
 
