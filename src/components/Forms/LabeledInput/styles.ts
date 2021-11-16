@@ -14,6 +14,21 @@ export const CustomInput = styled.input`
   &.error {
     border-bottom: 2px solid var(--pink);
   }
+
+  &[type="date"] {
+    &::-webkit-calendar-picker-indicator {
+      background: transparent;
+      bottom: 0;
+      color: transparent;
+      cursor: pointer;
+      height: auto;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: auto;
+    }
+  }
 `;
 
 export const TextArea = styled.textarea`

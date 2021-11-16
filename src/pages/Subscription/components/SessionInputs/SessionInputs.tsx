@@ -79,7 +79,7 @@ const SessionInputs: React.FC<Props> = ({
         value={myTime.day}
         onChange={sessionOnChangeHandler}
         required
-        errorMsg={"Esse dia num tem festival não :-("}
+        errorMsg={"Esse dia num tem festival não... Só tem nos dias 25, 26 e 27 :-)"}
         forceValidation={forceValidation}
       />
       <LabeledInput
