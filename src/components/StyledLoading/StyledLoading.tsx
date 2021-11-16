@@ -18,3 +18,14 @@ export const StyledLoader = styled(LoadingOverlay)`
     }
   }
 `;
+
+export const LoaderMsg = styled.a`
+  top: 20vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: fixed;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 800;
+`;

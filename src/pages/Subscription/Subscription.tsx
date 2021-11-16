@@ -9,7 +9,7 @@ import SessionInputs from "./components/SessionInputs/SessionInputs";
 import { Session } from "../../models/Play/Play";
 import ImageInput from "../../components/Forms/ImageInput/ImageInput";
 import { usePlaySubscriptionForm } from "./hooks/usePlaySubscriptionForm";
-import { StyledLoader } from "../../components/StyledLoading/StyledLoading";
+import { StyledLoader, LoaderMsg } from "../../components/StyledLoading/StyledLoading";
 
 export interface Props {}
 
@@ -27,7 +27,11 @@ const Subscription: React.FC<Props> = () => {
   ] = usePlaySubscriptionForm();
 
   return (
-    <StyledLoader active={loading} spinner>
+    <StyledLoader
+      active={loading}
+      text={<LoaderMsg>Enviando inscrição...</LoaderMsg>}
+      spinner
+    >
       <PageContainer>
         <DefaultContainer>
           <H3>Inscrever Espetáculo no Festival</H3>
