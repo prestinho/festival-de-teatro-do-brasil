@@ -11,6 +11,8 @@ export interface Play {
   images?: Image[] | null;
   sessions: Session[];
   timestamp?: string;
+  phone?: string;
+  userId?: string;
 }
 export interface Image {
   image: string;
@@ -57,7 +59,7 @@ export const emptyImage = (): Image => ({
   image: "",
   caption: "",
 });
-export const emptyPlay = (): Play => ({
+export const emptyPlay = (userId = ""): Play => ({
   id: "",
   name: "",
   group: "",
@@ -66,6 +68,8 @@ export const emptyPlay = (): Play => ({
   about: "",
   teaser: "",
   crew: "",
+  phone: "",
+  userId: userId,
   poster: emptyImage(),
   sessions: [emptySession()],
 });

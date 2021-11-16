@@ -1,13 +1,5 @@
 import { doc, setDoc } from "@firebase/firestore";
-import {
-  ChangeEvent,
-  MouseEvent,
-  MutableRefObject,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { ChangeEvent, MouseEvent, useCallback, useEffect, useState } from "react";
 import { db, storage } from "../../../apis/firebase";
 import playConverter from "../../../models/Play/firestoreConverter";
 import slugify from "react-slugify";
@@ -20,9 +12,9 @@ import {
   Play,
   Session,
 } from "../../../models/Play/Play";
-import { isValidLink, waitFor } from "../../../services/util";
+import { isValidLink, waitFor } from "../../../services/util/util";
 import { ref, uploadString, getDownloadURL } from "@firebase/storage";
-import { imgPathProvider } from "../../../services/imgPathProvider";
+import { imgPathProvider } from "../../../services/imgPathProvider/imgPathProvider";
 
 export const usePlaySubscriptionForm = (): [
   Play,
@@ -133,7 +125,8 @@ export const usePlaySubscriptionForm = (): [
         document
           .getElementsByClassName("error-ref")?.[0]
           ?.scrollIntoView({ behavior: "smooth", block: "start" });
-        if (!document.getElementsByClassName("error-ref")) throw "not yet";
+        if (!document.getElementsByClassName("error-ref"))
+          throw Error("No error ref found yet");
       };
 
       waitFor(scrollToError);

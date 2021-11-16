@@ -33,14 +33,14 @@ const Home: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (filters.state) setPlays(allPlays.filter((play) => play.state == filters.state));
+    if (filters.state) setPlays(allPlays.filter((play) => play.state === filters.state));
     else setPlays(allPlays);
 
     setLoading(false);
   }, [filters, allPlays]);
 
   return (
-    <PageContainer>
+    <PageContainer style={{ display: "block" }}>
       <Banner />
       <FiltersContainer filters={filters} setFilters={handleSetFilters} />
       <PlaysGrid plays={plays} loading={loading} />

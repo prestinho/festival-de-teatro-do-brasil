@@ -1,20 +1,5 @@
 import styled from "styled-components";
-
-export const Container = styled.div`
-  width: 90vw;
-  max-width: 700px;
-  padding: 20px;
-  background: var(--white);
-  border-radius: 10px;
-  box-shadow: rgb(0 0 0 / 24%) 0px 8px 12px;
-  position: relative;
-  top: 80px;
-
-  @media (min-width: 768px) {
-    top: 0px;
-    padding: 50px;
-  }
-`;
+import { DefaultButton } from "../../components/DefaultButton/DefaultButton";
 
 export const H3 = styled.h3`
   text-align: center;
@@ -40,22 +25,11 @@ export const AddButton = styled.a`
   }
 `;
 
-export const SaveButton = styled.button`
-  background: var(--primary-color);
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 30px;
-
-  &:hover {
-    background-color: var(--secondary-color);
-  }
-`;
-
 export const Row = styled.div`
   @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;
   }
 `;
+
+export const SaveButton = styled(DefaultButton)``;

@@ -13,10 +13,10 @@ export const imgPathProvider = {
 
     const transform =
       width || height
-        ? `tr:${width ? `w-${width},` : ""}${height ? `h-${height}` : ""}`
+        ? `/tr:${width ? `w-${width},` : ""}${height ? `h-${height}` : ""}`
         : "";
 
-    return `${imgPathProvider.getBase()}/${transform}/${src}`;
+    return `${imgPathProvider.getBase()}${transform}/${src}`;
   },
 
   cleanBasePath: (url: string) =>

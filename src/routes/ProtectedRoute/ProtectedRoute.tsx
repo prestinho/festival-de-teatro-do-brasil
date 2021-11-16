@@ -23,7 +23,7 @@ export default function ProtectedRoute({
     }
   }, [isAuthenticated, setRedirectPath, currentLocation]);
 
-  if (isAuthenticated && redirectPath === currentLocation.pathname) {
+  if (isAuthenticated) {
     return <Route {...routeProps} />;
   } else {
     return (

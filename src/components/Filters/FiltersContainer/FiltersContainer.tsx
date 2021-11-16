@@ -1,9 +1,9 @@
-import React, { memo, useContext } from "react";
+import React, { memo } from "react";
 import StateFilter from "../StateFilter/StateFilter";
 
 import { states } from "../../../models/State/states";
 
-import { Container, ContainerFooter } from "./styles";
+import { Container } from "./styles";
 
 export interface Props {
   filters: { state: string };

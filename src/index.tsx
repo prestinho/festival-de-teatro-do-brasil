@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import { SessionContextProvider } from "./contexts/SessionContextProvider";
+import AuthProvider from "./contexts/AuthProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <SessionContextProvider>
+      <AuthProvider>
         <App />
-      </SessionContextProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

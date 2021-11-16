@@ -1,33 +1,33 @@
-import React, { useState } from "react";
+import React from "react";
 import GlobalStyles from "./styles/GlobalStyles";
 import { useNavigation } from "./hooks/useNavigation";
 
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import Subscription from "./pages/Subscription/Subscription";
-import Login from "./pages/Login/Login";
+import SubscriptionLogin from "./pages/SubscriptionLogin/SubscriptionLogin";
 
 import { Route, Switch } from "react-router";
-import ProtectedRoute, {
-  ProtectedRouteProps,
-} from "./routes/ProtectedRoute/ProtectedRoute";
-import { useSessionContext } from "./contexts/SessionContextProvider";
+import PrivateRoute from "./routes/ProtectedRoute/PrivateRoute";
+// import ProtectedRoute, {
+//   ProtectedRouteProps,
+// } from "./routes/ProtectedRoute/ProtectedRoute";
 
 const App: React.FC = () => {
   const hasNavigated = useNavigation();
 
-  const [sessionContext, updateSessionContext] = useSessionContext();
+  // const [sessionContext, updateSessionContext] = useSessionContext();
 
-  const setRedirectPath = (path: string) => {
-    updateSessionContext({ ...sessionContext, redirectPath: path });
-  };
+  // const setRedirectPath = (path: string) => {
+  //   updateSessionContext({ ...sessionContext, redirectPath: path });
+  // };
 
-  const defaultProtectedRouteProps: ProtectedRouteProps = {
-    isAuthenticated: !!sessionContext.isAuthenticated,
-    authenticationPath: "/login",
-    redirectPath: sessionContext.redirectPath,
-    setRedirectPath: setRedirectPath,
-  };
+  // const defaultProtectedRouteProps: ProtectedRouteProps = {
+  //   isAuthenticated: !!sessionContext.isAuthenticated,
+  //   authenticationPath: "/inscricao-aviso",
+  //   redirectPath: sessionContext.redirectPath,
+  //   setRedirectPath: setRedirectPath,
+  // };
 
   return (
     <div>
@@ -35,12 +35,13 @@ const App: React.FC = () => {
       <Navbar hasNavigated={hasNavigated} />
       <Switch>
         <Route exact={true} path="/" component={Home} />
-        <ProtectedRoute
+        {/* <ProtectedRoute
           {...defaultProtectedRouteProps}
           path="/inscricao"
           component={Subscription}
-        />
-        <Route path="/login" component={Login} />
+        /> */}
+        <PrivateRoute path="/inscricao" component={Subscription} />
+        <Route path="/inscricao-aviso" component={SubscriptionLogin} />
       </Switch>
     </div>
   );

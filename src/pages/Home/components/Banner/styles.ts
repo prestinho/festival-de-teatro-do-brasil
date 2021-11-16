@@ -13,7 +13,7 @@ export const Container = styled.div`
     margin-top: 0px;
     align-items: flex-start;
     justify-content: center;
-    margin-left: 5vw;
+    //margin-left: 5vw;
   }
 `;
 

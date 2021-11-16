@@ -10,7 +10,7 @@ import {
 } from "./styles";
 
 import { FormField } from "../styles";
-import { isValidLink } from "../../../services/util";
+import { isValidLink } from "../../../services/util/util";
 
 export interface PropsLabeledInput {
   id: string;

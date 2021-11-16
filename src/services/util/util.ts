@@ -1,6 +1,6 @@
 export const isValidLink = (link: string | undefined): boolean => {
   var regexQuery =
-    /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
+    /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g; // eslint-disable-line
   var url = new RegExp(regexQuery, "g");
 
   if (link && url.test(link)) {
@@ -31,7 +31,7 @@ export async function waitFor(fn: any, timeout = 500): Promise<void> {
     }
   }
 
-  // if (timedOut) {
-  //   new Error("timeout");
-  // }
+  if (timedOut) {
+    new Error("timeout");
+  }
 }

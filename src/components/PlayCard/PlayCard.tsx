@@ -5,7 +5,7 @@ import { KeyboardArrowRight } from "@styled-icons/material-rounded/KeyboardArrow
 import { Card, Poster, Title, Info, PlaySession, Actions } from "./styles";
 
 import { Play } from "../../models/Play/Play";
-import { imgPathProvider } from "../../services/imgPathProvider";
+import { imgPathProvider } from "../../services/imgPathProvider/imgPathProvider";
 
 export interface Props {
   play: Play;

@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Container, H3, Sessions, AddButton, Row, SaveButton } from "./styles";
-import { PageContainer } from "../../styles/PageStyles";
+import { H3, Sessions, AddButton, Row, SaveButton } from "./styles";
+import { DefaultContainer, PageContainer } from "../../styles/PageStyles";
 import { states } from "../../models/State/states";
 import LabeledInput from "../../components/Forms/LabeledInput/LabeledInput";
 import Select from "../../components/Forms/Select/Select";
@@ -28,8 +28,8 @@ const Subscription: React.FC<Props> = () => {
 
   return (
     <StyledLoader active={loading} spinner>
-      <PageContainer style={{ display: "flex", justifyContent: "center" }}>
-        <Container>
+      <PageContainer>
+        <DefaultContainer>
           <H3>Inscrever Espetáculo no Festival</H3>
           <form>
             <LabeledInput
@@ -72,6 +72,16 @@ const Subscription: React.FC<Props> = () => {
                 onChange={onChangeHandler}
               />
             </Row>
+
+            <LabeledInput
+              id="phone"
+              type="phone"
+              placeholder="Telefone com DDD"
+              value={play.phone}
+              onChange={onChangeHandler}
+              errorMsg={"É meio old school, mas queria pedir seu telefone :-S"}
+              forceValidation={forceValidation}
+            />
 
             <LabeledInput
               id="teaser"
@@ -132,7 +142,7 @@ const Subscription: React.FC<Props> = () => {
 
             <SaveButton onClick={handleSave}>Realizar Inscrição</SaveButton>
           </form>
-        </Container>
+        </DefaultContainer>
       </PageContainer>
     </StyledLoader>
   );
