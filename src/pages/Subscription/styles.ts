@@ -1,10 +1,6 @@
 import styled from "styled-components";
 import { DefaultButton } from "../../components/DefaultButton/DefaultButton";
 
-export const H3 = styled.h3`
-  text-align: center;
-`;
-
 export const Sessions = styled.div`
   margin-top: 1rem;
   padding: 1rem;

@@ -15,6 +15,7 @@ import {
 import { isValidLink, waitFor } from "../../../services/util/util";
 import { ref, uploadString, getDownloadURL } from "@firebase/storage";
 import { imgPathProvider } from "../../../services/imgPathProvider/imgPathProvider";
+import { useHistory } from "react-router";
 
 export const usePlaySubscriptionForm = (): [
   Play,
@@ -38,6 +39,8 @@ export const usePlaySubscriptionForm = (): [
 
   const [isLoading, setLoading] = useState<boolean>(false);
   const [forceValidation, setForceValidation] = useState<boolean>(false);
+
+  const history = useHistory();
 
   useEffect(() => {
     setPlay((prev: Play) => ({
@@ -151,6 +154,11 @@ export const usePlaySubscriptionForm = (): [
 
         await setDoc(doc(db, "plays", id).withConverter(playConverter), playToBeSaved);
         setPlay(playToBeSaved);
+
+        history.push({
+          pathname: "/inscricao-realizada",
+          state: { play: play },
+        });
       })
       .catch((reason) => {
         console.error(reason);

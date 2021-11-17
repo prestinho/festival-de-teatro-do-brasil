@@ -1,7 +1,7 @@
 import React from "react";
 
-import { H3, Sessions, AddButton, Row, SaveButton } from "./styles";
-import { DefaultContainer, PageContainer } from "../../styles/PageStyles";
+import { Sessions, AddButton, Row, SaveButton } from "./styles";
+import { DefaultContainer, PageContainer, H3 } from "../../styles/PageStyles";
 import { states } from "../../models/State/states";
 import LabeledInput from "../../components/Forms/LabeledInput/LabeledInput";
 import Select from "../../components/Forms/Select/Select";

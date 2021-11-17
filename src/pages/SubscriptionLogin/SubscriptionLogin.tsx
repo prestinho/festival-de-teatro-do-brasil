@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 
-import { Strong, P, H3 } from "./styles";
-
-import { DefaultContainer, PageContainer } from "../../styles/PageStyles";
+import { DefaultContainer, PageContainer, Strong, P, H3 } from "../../styles/PageStyles";
 import GoToSubscriptionButton from "./components/GoToSubscriptionButton/GoToSubscriptionButton";
 import { User } from "@firebase/auth";
 import { useAuthContext } from "../../hooks/useAuthContext";

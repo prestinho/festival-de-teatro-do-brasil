@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const PageContainer = styled.div`
@@ -31,5 +32,37 @@ export const DefaultContainer = styled.div`
   @media (min-width: 768px) {
     top: 0px;
     padding: 50px;
+  }
+`;
+
+export const H3 = styled.h3`
+  text-align: center;
+  margin-bottom: 3rem;
+`;
+
+export const P = styled.p`
+  line-height: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: justify;
+`;
+
+export const Strong = styled.strong`
+  color: var(--pink);
+  transition: ease all 0.2s;
+  &:hover {
+    color: var(--quinternary-color);
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  color: white;
+  transition: ease all 0.2s;
+  font-weight: 800;
+  text-decoration: none;
+  background: var(--pink);
+  padding: 0 10px;
+  border-radius: 4px;
+  &:hover {
+    background: var(--secondary-color);
   }
 `;
