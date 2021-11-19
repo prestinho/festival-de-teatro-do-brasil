@@ -26,7 +26,6 @@ export const Card = styled.div`
   width: var(--card-width);
   max-width: 95vw;
   border-radius: var(--card-border);
-  box-shadow: 5px black;
 
   // This is a bug fix: card "blinked transparent" after hover +
   -webkit-transform: translateZ(0);

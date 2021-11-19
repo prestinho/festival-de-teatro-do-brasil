@@ -21,7 +21,7 @@ export const PageContainer = styled.div`
 
 export const DefaultContainer = styled.div`
   width: 90vw;
-  max-width: 700px;
+  max-width: 900px;
   padding: 20px;
   background: var(--white);
   border-radius: 10px;
@@ -44,6 +44,7 @@ export const P = styled.p`
   line-height: 1.5rem;
   margin-bottom: 1rem;
   text-align: justify;
+  white-space: pre-line;
 `;
 
 export const Strong = styled.strong`

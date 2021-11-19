@@ -16,7 +16,8 @@ export const Container = styled.div<Props>`
     justify-content: space-around;
     padding-left: 0px;
     height: ${(props) => (props.hasNavigated ? "60px" : "80px")};
-    background-color: ${(props) => (props.hasNavigated ? "var(--primary-color)" : "")};
+    //background-color: ${(props) => (props.hasNavigated ? "var(--primary-color)" : "")};
+    background-color: var(--primary-color);
     opacity: 0.9;
     transition: all easy 1s;
     transition: background-color 0.5s;

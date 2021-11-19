@@ -6,14 +6,17 @@ import { Card, Poster, Title, Info, PlaySession, Actions } from "./styles";
 
 import { Play } from "../../models/Play/Play";
 import { imgPathProvider } from "../../services/imgPathProvider/imgPathProvider";
+import { useHistory } from "react-router";
 
 export interface Props {
   play: Play;
 }
 
 const PlayCard: React.FC<Props> = ({ play }) => {
+  const history = useHistory();
+
   return (
-    <Card>
+    <Card onClick={() => history.push("/espetaculo/" + play.id)}>
       <div>
         <Poster
           bgImg={imgPathProvider.getPath(
