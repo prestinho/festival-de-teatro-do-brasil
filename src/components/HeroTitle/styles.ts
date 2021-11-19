@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 type ImageProps = {
-  bgImg: String;
+  bgImg: string;
+  bgImgSmall: string;
 };
 
 export const Image = styled.div<ImageProps>`
@@ -11,7 +12,7 @@ export const Image = styled.div<ImageProps>`
   width: 100%;
   height: 100vh;
   background-size: cover;
-  background-image: ${(props) => `url(${props.bgImg})`};
+  background-image: ${(props) => `url(${props.bgImg}), url(${props.bgImgSmall})`};
   mask-image: linear-gradient(to bottom, black 80%, transparent);
 `;
 
