@@ -11,7 +11,6 @@ export interface Props {
 }
 
 const HeroTitle: React.FC<Props> = ({ src, title, caption, subTitle }) => {
-  console.log(src, title, caption);
   return (
     <>
       <Title>
@@ -19,7 +18,7 @@ const HeroTitle: React.FC<Props> = ({ src, title, caption, subTitle }) => {
         {subTitle && (
           <>
             <br />
-            <a className="sub">{subTitle}</a>
+            <span className="sub">{subTitle}</span>
           </>
         )}
       </Title>

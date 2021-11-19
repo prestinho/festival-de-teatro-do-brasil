@@ -29,7 +29,7 @@ export const Title = styled.div`
   border-radius: 0 var(--card-border) var(--card-border) 0;
   color: white;
   text-transform: uppercase;
-  a.sub {
+  span.sub {
     font-size: 1.2rem;
     font-weight: 400;
   }

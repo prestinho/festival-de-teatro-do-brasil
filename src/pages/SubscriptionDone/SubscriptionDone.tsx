@@ -22,7 +22,7 @@ const SubscriptionDone: React.FC = () => {
   useEffect(() => {
     if (!location.state.play) history.push("/inscricao-aviso");
     setPlay(location.state.play);
-  }, [location]);
+  }, [location, history]);
 
   return (
     <PageContainer>

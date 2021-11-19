@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { DefaultContainer, PageContainer, Strong, P, H3 } from "../../styles/PageStyles";
 import GoToSubscriptionButton from "./components/GoToSubscriptionButton/GoToSubscriptionButton";

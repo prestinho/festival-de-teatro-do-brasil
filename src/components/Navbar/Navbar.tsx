@@ -31,17 +31,21 @@ const Navbar: React.FC<Props> = ({ hasNavigated }) => {
         <Img src={GirlImg} />
       </Girl>
       <MenuItem hasNavigated={hasNavigated}>
-        <Link to="/">Home</Link>
+        <Link to="/" href="/">
+          Home
+        </Link>
       </MenuItem>
       <MenuItem hasNavigated={hasNavigated}>O Festival</MenuItem>
       <MenuItem hasNavigated={hasNavigated}>O PAVIO</MenuItem>
       <MenuItem hasNavigated={hasNavigated}>
-        <Link to="/inscricao-aviso">Inscrição</Link>
+        <Link to="/inscricao-aviso" href="/inscricao-aviso">
+          Inscrição
+        </Link>
       </MenuItem>
       <MenuItem hasNavigated={hasNavigated}>Programação</MenuItem>
       {auth && (
         <MenuItem hasNavigated={hasNavigated}>
-          <a onClick={handleSignOut}>Logout</a>
+          <span onClick={handleSignOut}>Logout</span>
         </MenuItem>
       )}
     </Container>
