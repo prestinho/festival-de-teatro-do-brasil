@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import FiltersContainer from "../../components/Filters/FiltersContainer/FiltersContainer";
 import PlaysGrid from "../../components/PlaysGrid/PlaysGrid";
 import Banner from "./components/Banner/Banner";
@@ -18,12 +18,15 @@ const Home: React.FC = () => {
     setFilters(filters);
   };
 
-  useEffect(() => {
+  const getPlaysVisiblePlays = useCallback(() => {
     if (filters.state) setPlays(getPlaysByState(filters.state));
     else setPlays(getAllPlays());
+  }, [filters]);
 
+  useEffect(() => {
+    getPlaysVisiblePlays();
     setLoading(false);
-  }, [filters, getPlaysByState, getAllPlays]);
+  }, [getPlaysVisiblePlays]);
 
   return (
     <PageContainer style={{ display: "block" }}>
