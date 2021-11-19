@@ -41,6 +41,9 @@ const playConverter = {
     const play: Play = {
       id: snapshot.id,
       name: playData.name,
+      about: playData.about,
+      crew: playData.crew,
+      teaser: playData.teaser,
       group: playData.group,
       poster: poster,
       sessions: sessions,
