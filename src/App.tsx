@@ -9,41 +9,26 @@ import SubscriptionLogin from "./pages/SubscriptionLogin/SubscriptionLogin";
 
 import { Route, Switch } from "react-router";
 import PrivateRoute from "./routes/ProtectedRoute/PrivateRoute";
-// import ProtectedRoute, {
-//   ProtectedRouteProps,
-// } from "./routes/ProtectedRoute/ProtectedRoute";
+import SubscriptionDone from "./pages/SubscriptionDone/SubscriptionDone";
+import PlayDetails from "./pages/PlayDetails/PlayDetails";
+import PlaysProvider from "./contexts/PlaysProvider";
 
 const App: React.FC = () => {
   const hasNavigated = useNavigation();
 
-  // const [sessionContext, updateSessionContext] = useSessionContext();
-
-  // const setRedirectPath = (path: string) => {
-  //   updateSessionContext({ ...sessionContext, redirectPath: path });
-  // };
-
-  // const defaultProtectedRouteProps: ProtectedRouteProps = {
-  //   isAuthenticated: !!sessionContext.isAuthenticated,
-  //   authenticationPath: "/inscricao-aviso",
-  //   redirectPath: sessionContext.redirectPath,
-  //   setRedirectPath: setRedirectPath,
-  // };
-
   return (
-    <div>
+    <PlaysProvider>
       <GlobalStyles />
       <Navbar hasNavigated={hasNavigated} />
       <Switch>
         <Route exact={true} path="/" component={Home} />
-        {/* <ProtectedRoute
-          {...defaultProtectedRouteProps}
-          path="/inscricao"
-          component={Subscription}
-        /> */}
         <PrivateRoute path="/inscricao" component={Subscription} />
         <Route path="/inscricao-aviso" component={SubscriptionLogin} />
+        <PrivateRoute path="/inscricao-realizada" component={SubscriptionDone} />
+
+        <Route path="/espetaculo/:playId" component={PlayDetails} />
       </Switch>
-    </div>
+    </PlaysProvider>
   );
 };
 
