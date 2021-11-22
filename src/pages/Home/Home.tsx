@@ -21,7 +21,7 @@ const Home: React.FC = () => {
   const getPlaysVisiblePlays = useCallback(() => {
     if (filters.state) setPlays(getPlaysByState(filters.state));
     else setPlays(getAllPlays());
-  }, [filters]);
+  }, [filters, getAllPlays, getPlaysByState]);
 
   useEffect(() => {
     getPlaysVisiblePlays();
