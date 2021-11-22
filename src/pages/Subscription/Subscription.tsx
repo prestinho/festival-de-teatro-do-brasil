@@ -38,7 +38,7 @@ const Subscription: React.FC<Props> = () => {
       <PageContainer>
         <DefaultContainer>
           <H3>Inscrever Espetáculo no Festival</H3>
-          <form>
+          <form autoComplete="off">
             <LabeledInput
               id="name"
               type="text"
@@ -83,7 +83,8 @@ const Subscription: React.FC<Props> = () => {
             <LabeledInput
               id="phone"
               type="phone"
-              placeholder="Telefone com DDD"
+              placeholder="Telefone da pessoal responsável pela produção"
+              required
               value={play.phone}
               onChange={onChangeHandler}
               errorMsg={"É meio old school, mas queria pedir seu telefone :-S"}

@@ -92,6 +92,8 @@ const LabeledInput: React.FC<PropsLabeledInput> = ({
     }
   }, [forceValidation, value, validate]);
 
+  const mask = type === "phone" ? "(99) 9 9999.9999" : "";
+
   return (
     <FormField>
       {error && <RefDiv className="error-ref" />}
@@ -120,6 +122,7 @@ const LabeledInput: React.FC<PropsLabeledInput> = ({
             max={max}
             value={value}
             onChange={validateAndChange}
+            mask={mask}
             data-testid={testId ?? id}
             className={error ? "error" : ""}
           />
