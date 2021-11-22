@@ -22,15 +22,17 @@ const HeroTitle: React.FC<Props> = ({ src, title, caption, subTitle }) => {
           </>
         )}
       </Title>
-      <Image
-        bgImg={imgPathProvider.getPath(src, window.innerWidth, window.innerHeight)}
-        bgImgSmall={imgPathProvider.getPath(
-          src,
-          window.innerWidth * 0.1,
-          window.innerHeight * 0.1
-        )}
-        data-testid="image"
-      />
+      {src && (
+        <Image
+          bgImg={imgPathProvider.getPath(src, window.innerWidth, window.innerHeight)}
+          bgImgSmall={imgPathProvider.getPath(
+            src,
+            window.innerWidth * 0.1,
+            window.innerHeight * 0.1
+          )}
+          data-testid="image"
+        />
+      )}
     </>
   );
 };
