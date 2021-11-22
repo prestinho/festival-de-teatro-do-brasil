@@ -5,17 +5,22 @@ import Banner from "./components/Banner/Banner";
 import { PageContainer } from "../../styles/PageStyles";
 
 import { Play } from "../../models/Play/Play";
+import { Filters } from "../../models/Filters/Filters";
 import { usePlaysContext } from "../../hooks/usePlaysContext/usePlaysContext";
+import FiltersService from "../../services/FiltersService/FiltersService";
 
 const Home: React.FC = () => {
   const [plays, setPlays] = useState<Play[]>([]);
-  const [filters, setFilters] = useState({ state: "" });
+  const [filters, setFilters] = useState<Filters>(FiltersService.getFilters());
   const [loading, setLoading] = useState<boolean>(false);
 
   const [getAllPlays, getPlaysByState] = usePlaysContext();
 
-  const handleSetFilters = (filters: any) => {
-    setFilters(filters);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFilters((prevState: Filters) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
   };
 
   const getPlaysVisiblePlays = useCallback(() => {
@@ -28,10 +33,14 @@ const Home: React.FC = () => {
     setLoading(false);
   }, [getPlaysVisiblePlays]);
 
+  useEffect(() => {
+    FiltersService.setFilters(filters);
+  }, [filters]);
+
   return (
     <PageContainer style={{ display: "block" }}>
       <Banner />
-      <FiltersContainer filters={filters} setFilters={handleSetFilters} />
+      <FiltersContainer filters={filters} handleChange={handleChange} />
       <PlaysGrid plays={plays} loading={loading} />
     </PageContainer>
   );

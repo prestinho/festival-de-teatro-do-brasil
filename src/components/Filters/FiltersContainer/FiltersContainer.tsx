@@ -4,20 +4,14 @@ import StateFilter from "../StateFilter/StateFilter";
 import { states } from "../../../models/State/states";
 
 import { Container } from "./styles";
+import { Filters } from "../../../models/Filters/Filters";
 
 export interface Props {
-  filters: { state: string };
-  setFilters: Function;
+  filters: Filters;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const FiltersContainer: React.FC<Props> = ({ filters, setFilters }) => {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFilters((prevState: any) => ({
-      ...prevState,
-      [event.target.name]: event.target.value,
-    }));
-  };
-
+const FiltersContainer: React.FC<Props> = ({ filters, handleChange }) => {
   return (
     <Container data-testid="filters">
       <StateFilter states={states} checked={filters.state} handleChange={handleChange} />
