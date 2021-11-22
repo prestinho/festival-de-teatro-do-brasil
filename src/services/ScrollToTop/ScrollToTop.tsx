@@ -11,7 +11,7 @@ function ScrollToTop({ history }: Props) {
     return history.listen(() => {
       window.scrollTo(0, 0);
     });
-  }, []);
+  }, [history]);
 
   return null;
 }
