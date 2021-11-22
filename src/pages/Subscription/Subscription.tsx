@@ -10,10 +10,13 @@ import { Session } from "../../models/Play/Play";
 import ImageInput from "../../components/Forms/ImageInput/ImageInput";
 import { usePlaySubscriptionForm } from "./hooks/usePlaySubscriptionForm";
 import { StyledLoader, LoaderMsg } from "../../components/StyledLoading/StyledLoading";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { User } from "@firebase/auth";
 
 export interface Props {}
 
 const Subscription: React.FC<Props> = () => {
+  const auth: User | null = useAuthContext();
   const [
     play,
     loading,
@@ -24,7 +27,7 @@ const Subscription: React.FC<Props> = () => {
     addSessionHandler,
     handleSave,
     forceValidation,
-  ] = usePlaySubscriptionForm();
+  ] = usePlaySubscriptionForm(auth);
 
   return (
     <StyledLoader

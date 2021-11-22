@@ -37,14 +37,51 @@ export interface Place {
   address: string;
 }
 
+// export const emptyTime = (): Time => ({
+//   day: "",
+//   hour: "",
+// });
+// export const emptyPlace = (): Place => ({
+//   id: "",
+//   name: "",
+//   address: "",
+// });
+// export const emptyTicketFeesEntity = (): TicketFeesEntity => ({
+//   type: "",
+//   value: "",
+// });
+// export const emptySession = (): Session => ({
+//   place: emptyPlace(),
+//   time: emptyTime(),
+//   ticketFees: [emptyTicketFeesEntity()],
+// });
+// export const emptyImage = (): Image => ({
+//   image: "",
+//   caption: "",
+// });
+// export const emptyPlay = (userId = ""): Play => ({
+//   id: "",
+//   name: "",
+//   group: "",
+//   state: "AL",
+//   year: "",
+//   about: "",
+//   teaser: "",
+//   crew: "",
+//   phone: "",
+//   userId: userId,
+//   poster: emptyImage(),
+//   sessions: [emptySession()],
+// });
+
 export const emptyTime = (): Time => ({
-  day: "",
-  hour: "",
+  day: "2022-03-26",
+  hour: "12:00",
 });
 export const emptyPlace = (): Place => ({
   id: "",
-  name: "",
-  address: "",
+  name: "LUGAR",
+  address: "ENDEREÇO",
 });
 export const emptyTicketFeesEntity = (): TicketFeesEntity => ({
   type: "",
@@ -57,19 +94,19 @@ export const emptySession = (): Session => ({
 });
 export const emptyImage = (): Image => ({
   image: "",
-  caption: "",
+  caption: "CAPTION",
 });
-export const emptyPlay = (userId = ""): Play => ({
+export const emptyPlay = (): Play => ({
   id: "",
-  name: "",
-  group: "",
+  name: "PEÇA",
+  group: "GRUPO",
   state: "AL",
-  year: "",
-  about: "",
+  year: "1999",
+  about: "SOBRE",
   teaser: "",
-  crew: "",
-  phone: "",
-  userId: userId,
+  crew: "FICHA",
+  phone: "1234",
+  userId: "",
   poster: emptyImage(),
   sessions: [emptySession()],
 });

@@ -16,8 +16,11 @@ import { isValidLink, waitFor } from "../../../services/util/util";
 import { ref, uploadString, getDownloadURL } from "@firebase/storage";
 import { imgPathProvider } from "../../../services/imgPathProvider/imgPathProvider";
 import { useHistory } from "react-router";
+import { User } from "@firebase/auth";
 
-export const usePlaySubscriptionForm = (): [
+export const usePlaySubscriptionForm = (
+  auth: User | null
+): [
   Play,
   boolean,
   [number, Session][],
@@ -146,12 +149,16 @@ export const usePlaySubscriptionForm = (): [
     // after that we upload the auxiliar play and if it goes well, we set our original play
     const imageRef = ref(storage, `plays/${id}/poster`);
 
+    const userId = auth?.uid;
+
     await uploadString(imageRef, play.poster.image, "data_url")
       .then(async (snapshot) => {
         const downloadUrl = imgPathProvider.cleanBasePath(await getDownloadURL(imageRef));
         const playToBeSaved = play;
         playToBeSaved.poster.image = downloadUrl;
+        playToBeSaved.userId = userId;
 
+        console.log(playToBeSaved);
         await setDoc(doc(db, "plays", id).withConverter(playConverter), playToBeSaved);
         setPlay(playToBeSaved);
 
