@@ -34,16 +34,17 @@ const SubscriptionDone: React.FC = () => {
         </P>
         <P>Obrigade! Logo nos vemos nos palcos!!!</P>
         <P>
-          <Strong>* Você poderá editar</Strong> qualquer coisa informação sobre seu
-          espetáculo na página <StyledLink to="/inscricoes">Minhas inscrições</StyledLink>
+          <Strong>* Você poderá editar</Strong> as informações na página{" "}
+          <StyledLink to="/inscricoes">Minhas inscrições</StyledLink>
         </P>
         {play && (
           <P>
-            Espetáculo inscrito: <Strong>{play.name}</Strong>
+            <Strong>Espetáculo inscrito:</Strong> <P>{play.name}</P>
             <br />
-            Sobre: <Strong>{play.about}</Strong>
+            <Strong>Sobre:</Strong> <P>{play.about}</P>
             <br />
-            Ficha técnica: <Strong>{play.crew}</Strong>
+            <Strong>Ficha técnica:</Strong>
+            <P>{play.crew}</P>
           </P>
         )}
       </DefaultContainer>

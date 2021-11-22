@@ -12,6 +12,7 @@ import PrivateRoute from "./routes/ProtectedRoute/PrivateRoute";
 import SubscriptionDone from "./pages/SubscriptionDone/SubscriptionDone";
 import PlayDetails from "./pages/PlayDetails/PlayDetails";
 import PlaysProvider from "./contexts/PlaysProvider";
+import ScrollToTop from "./services/ScrollToTop/ScrollToTop";
 
 const App: React.FC = () => {
   const hasNavigated = useNavigation();
@@ -20,8 +21,10 @@ const App: React.FC = () => {
     <PlaysProvider>
       <GlobalStyles />
       <Navbar hasNavigated={hasNavigated} />
+      <ScrollToTop />
       <Switch>
         <Route exact={true} path="/" component={Home} />
+
         <PrivateRoute path="/inscricao" component={Subscription} />
         <Route path="/inscricao-aviso" component={SubscriptionLogin} />
         <PrivateRoute path="/inscricao-realizada" component={SubscriptionDone} />
