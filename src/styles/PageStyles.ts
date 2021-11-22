@@ -14,9 +14,7 @@ export const PageContainer = styled.div`
   color: var(--terciary-color);
   padding: 5vw;
 
-  @media (min-width: 768px) {
-    padding-top: 20vh;
-  }
+  padding-top: 80px;
 `;
 
 export const DefaultContainer = styled.div`
@@ -26,12 +24,12 @@ export const DefaultContainer = styled.div`
   background: var(--white);
   border-radius: 10px;
   box-shadow: rgb(0 0 0 / 24%) 0px 8px 12px;
-  position: relative;
   top: 80px;
+  z-index: 1;
 
   @media (min-width: 768px) {
-    top: 0px;
     padding: 50px;
+    top: 80px;
   }
 `;
 
