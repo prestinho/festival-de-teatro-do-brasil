@@ -14,6 +14,7 @@ import PlayDetails from "./pages/PlayDetails/PlayDetails";
 import PlaysProvider from "./contexts/PlaysProvider";
 import ScrollToTop from "./services/ScrollToTop/ScrollToTop";
 import LocalStorageService from "./services/LocalStorageService/LocalStorageService";
+import SubscriptionsManager from "./pages/SubscriptionsManager/SubscriptionsManager";
 
 const App: React.FC = () => {
   const hasNavigated = useNavigation();
@@ -32,6 +33,8 @@ const App: React.FC = () => {
         <PrivateRoute path="/inscricao-realizada" component={SubscriptionDone} />
 
         <Route path="/espetaculo/:playId" component={PlayDetails} />
+
+        <PrivateRoute path="/minhas-inscricoes" component={SubscriptionsManager} />
       </Switch>
     </PlaysProvider>
   );

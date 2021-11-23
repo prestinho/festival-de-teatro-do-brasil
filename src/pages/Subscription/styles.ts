@@ -27,5 +27,3 @@ export const Row = styled.div`
     justify-content: space-between;
   }
 `;
-
-export const SaveButton = styled(DefaultButton)``;

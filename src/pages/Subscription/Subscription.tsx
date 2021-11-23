@@ -1,37 +1,95 @@
-import React from "react";
+import React, { ChangeEvent, MouseEvent, useCallback, useEffect, useState } from "react";
 
-import { Sessions, AddButton, Row, SaveButton } from "./styles";
+import {
+  emptyImage,
+  emptyPlay,
+  emptySession,
+  Image,
+  Play,
+  Session,
+} from "../../models/Play/Play";
+
+import { Sessions, AddButton, Row } from "./styles";
 import { DefaultContainer, PageContainer, H3 } from "../../styles/PageStyles";
 import { states } from "../../models/State/states";
 import LabeledInput from "../../components/Forms/LabeledInput/LabeledInput";
 import Select from "../../components/Forms/Select/Select";
 import SessionInputs from "./components/SessionInputs/SessionInputs";
-import { Session } from "../../models/Play/Play";
+
 import ImageInput from "../../components/Forms/ImageInput/ImageInput";
-import { usePlaySubscriptionForm } from "./hooks/usePlaySubscriptionForm";
 import { StyledLoader, LoaderMsg } from "../../components/StyledLoading/StyledLoading";
-import { useAuthContext } from "../../hooks/useAuthContext";
-import { User } from "@firebase/auth";
+
+import SaveButton from "./components/SaveButton/SaveButton";
 
 export interface Props {}
 
 const Subscription: React.FC<Props> = () => {
-  const auth: User | null = useAuthContext();
-  const [
-    play,
-    loading,
-    sessions,
-    onChangeHandler,
-    onChangeImageHandler,
-    onChangeSessionHandler,
-    addSessionHandler,
-    handleSave,
-    forceValidation,
-  ] = usePlaySubscriptionForm(auth);
+  const [play, setPlay] = useState<Play>(emptyPlay());
+  const [poster, setPoster] = useState<Image>(emptyImage());
+  const [sessions, setSessions] = useState<[number, Session][]>([[0, emptySession()]]);
+
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [forceValidation, setForceValidation] = useState<boolean>(false);
+
+  useEffect(() => {
+    setPlay((prev: Play) => ({
+      ...prev,
+      sessions: sessions.map(([i, s]: [number, Session]) => s),
+    }));
+  }, [sessions]);
+
+  useEffect(() => {
+    setPlay((prev: Play) => ({
+      ...prev,
+      poster: poster,
+    }));
+  }, [poster]);
+
+  const onChangeHandler = (
+    e:
+      | ChangeEvent<HTMLInputElement>
+      | ChangeEvent<HTMLTextAreaElement>
+      | ChangeEvent<HTMLSelectElement>
+  ) => {
+    e.preventDefault();
+    setPlay((prev: Play) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onChangeImageHandler = useCallback((image: Image) => {
+    setPoster(image);
+  }, []);
+
+  const onChangeSessionHandler = useCallback((index: number, session: Session | null) => {
+    if (session) {
+      // update
+      setSessions((prev) =>
+        prev.map(([i, prevSession]: [number, Session]) => [
+          i,
+          i === index ? session : prevSession,
+        ])
+      );
+    } else {
+      // delete
+      setSessions((prev) =>
+        prev.filter(([i, prevSession]: [number, Session]) => i !== index)
+      );
+    }
+  }, []);
+
+  const addSessionHandler = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const last: [number, Session] | undefined = sessions.at(-1);
+    const index = (last && last[0] + 1) || 0;
+
+    setSessions((prev: [number, Session][]) => [...prev, [index, emptySession()]]);
+  };
 
   return (
     <StyledLoader
-      active={loading}
+      active={isLoading}
       text={<LoaderMsg>Enviando inscrição...</LoaderMsg>}
       spinner
     >
@@ -148,7 +206,13 @@ const Subscription: React.FC<Props> = () => {
               <AddButton onClick={addSessionHandler}>Adicionar nova sessão</AddButton>
             </Sessions>
 
-            <SaveButton onClick={handleSave}>Realizar Inscrição</SaveButton>
+            <SaveButton
+              play={play}
+              setPlay={setPlay}
+              setLoading={setLoading}
+              isLoading={isLoading}
+              setForceValidation={setForceValidation}
+            />
           </form>
         </DefaultContainer>
       </PageContainer>
