@@ -22,7 +22,7 @@ export const FileUploadDiv = styled.div`
   transform: scale(0.95);
 
   border-radius: 10px;
-  box-shadow: rgb(0 0 0 / 24%) 0px 8px 12px;
+  box-shadow: var(--box-shadow);
 
   &:hover {
     background-color: var(--primary-color);

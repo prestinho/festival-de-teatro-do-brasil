@@ -23,7 +23,7 @@ export const DefaultContainer = styled.div`
   padding: 20px;
   background: var(--white);
   border-radius: 10px;
-  box-shadow: rgb(0 0 0 / 24%) 0px 8px 12px;
+  box-shadow: var(--box-shadow);
   top: 80px;
   z-index: 1;
 

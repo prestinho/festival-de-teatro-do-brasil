@@ -26,7 +26,7 @@ export const Title = styled.div`
   background: rgb(255 112 118 / 85%);
   font-weight: 800;
   padding: 1rem;
-  box-shadow: rgb(0 0 0 / 24%) 0px 8px 12px;
+  box-shadow: var(--box-shadow);
   border-radius: 0 var(--card-border) var(--card-border) 0;
   color: white;
   text-transform: uppercase;

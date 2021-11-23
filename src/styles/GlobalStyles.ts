@@ -10,6 +10,7 @@ export default createGlobalStyle`
     --quinternary-color: #83b01e;
 
     --white: #ffffff;
+    --lightest-gray: #f3f3f3;
     --light-gray: #dedede;
     --gray: #777777;
     --dark-gray: #444444;
@@ -17,6 +18,8 @@ export default createGlobalStyle`
 
     --card-width: ${process.env.REACT_APP_CARD_WIDTH}px;
     --card-border: 10px;
+
+    --box-shadow: rgb(0 0 0 / 24%) 0px 8px 12px;
 }
 
 

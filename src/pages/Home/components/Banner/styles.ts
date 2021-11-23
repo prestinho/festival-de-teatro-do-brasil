@@ -52,7 +52,7 @@ export const Dias = styled.div`
     line-height: 2rem;
     background: var(--quinternary-color);
     border-radius: 5px;
-    box-shadow: rgb(0 0 0 / 24%) 0px 3px 6px;
+    box-shadow: var(--box-shadow);
     color: white;
     padding: 4px;
     margin-top: 30px;
