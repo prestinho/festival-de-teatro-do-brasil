@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import GlobalStyles from "./styles/GlobalStyles";
 import { useNavigation } from "./hooks/useNavigation";
 

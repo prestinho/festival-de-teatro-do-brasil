@@ -1,12 +1,24 @@
-import React, { MouseEvent, useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { usePlaysContext } from "../../hooks/usePlaysContext/usePlaysContext";
 import { getStatusName, Play } from "../../models/Play/Play";
-import { DefaultContainer, PageContainer } from "../../styles/PageStyles";
+import {
+  DefaultContainer,
+  H3,
+  P,
+  PageContainer,
+  Strong,
+  Table,
+  THead,
+  TBody,
+  Tr,
+  Th,
+  Td,
+} from "../../styles/PageStyles";
 import { Edit2Outline } from "@styled-icons/evaicons-outline";
 
-import { Table, THead, TBody, Tr, Th, Td } from "./styles";
+import { NewSubscriptionButton } from "./styles";
 
 export interface Props {}
 
@@ -24,6 +36,17 @@ const SubscriptionsManager: React.FC<Props> = () => {
   return (
     <PageContainer>
       <DefaultContainer>
+        <H3>Minhas Inscrições</H3>
+        <P>
+          Bem vinde <Strong>{auth?.displayName}</Strong>! Aqui nessa página você pode
+          realizar uma nova inscrição e acompanhar as inscrições que já fez!
+        </P>
+        <P>
+          Lembramos que você pode editar as inscrições que enviou até elas serem
+          validadas. Se tiver qualquer problema, envie um email para nós:{" "}
+          <Strong>EMAIL@EMAIL.COM</Strong>
+        </P>
+
         <Table>
           <THead>
             <Tr>
@@ -54,6 +77,13 @@ const SubscriptionsManager: React.FC<Props> = () => {
                 </Td>
               </Tr>
             ))}
+            <Tr>
+              <Td colSpan={3}>
+                <NewSubscriptionButton onClick={() => history.push("/inscricao-aviso")}>
+                  Enviar nova inscrição
+                </NewSubscriptionButton>
+              </Td>
+            </Tr>
           </TBody>
         </Table>
       </DefaultContainer>

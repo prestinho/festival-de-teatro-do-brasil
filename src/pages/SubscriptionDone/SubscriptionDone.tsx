@@ -35,7 +35,7 @@ const SubscriptionDone: React.FC = () => {
         <P>Obrigade! Logo nos vemos nos palcos!!!</P>
         <P>
           <Strong>* Você poderá editar</Strong> as informações na página{" "}
-          <StyledLink to="/inscricoes">Minhas inscrições</StyledLink>
+          <StyledLink to="/minhas-inscricoes">Minhas inscrições</StyledLink>
         </P>
         {play && (
           <P>

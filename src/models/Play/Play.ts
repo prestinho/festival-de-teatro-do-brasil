@@ -129,5 +129,9 @@ export const comparator = (a: Play, b: Play) => {
 };
 
 export const getStatusName = (letter: string | undefined) => {
-  return letter === "R" ? "Rejeitada" : letter === "A" ? "Aprovada" : "Em análise";
+  return letter === "R"
+    ? "Houve um problema"
+    : letter === "A"
+    ? "Validada"
+    : "Em análise";
 };
