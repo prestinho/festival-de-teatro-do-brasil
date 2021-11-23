@@ -17,10 +17,9 @@ const SubscriptionsManager: React.FC<Props> = () => {
 
   const [plays] = useState<Play[]>(getPlaysByUserId(auth?.uid));
 
-  const handleNavigateToPlay = (play : Play) => {
-    if (play.status !== 'R')
-        history.push("/espetaculo/" + play.id);
-  }
+  const handleNavigateToPlay = (play: Play) => {
+    if (play.status !== "R") history.push("/espetaculo/" + play.id);
+  };
 
   return (
     <PageContainer>
@@ -36,15 +35,15 @@ const SubscriptionsManager: React.FC<Props> = () => {
           <TBody>
             {plays.map((play: Play) => (
               <Tr key={play.id}>
-                <Td onClick={() => handleNavigateToPlay(play)}>
-                  {play.name}
-                </Td>
+                <Td onClick={() => handleNavigateToPlay(play)}>{play.name}</Td>
+
                 <Td
-                  onClick={{() => handleNavigateToPlay(play)}}
                   className={`status-${play.status}`}
+                  onClick={() => handleNavigateToPlay(play)}
                 >
                   {getStatusName(play.status)}
                 </Td>
+
                 <Td>
                   <Edit2Outline
                     size="2rem"
