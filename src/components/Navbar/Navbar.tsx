@@ -38,7 +38,7 @@ const Navbar: React.FC<Props> = ({ hasNavigated }) => {
       <MenuItem hasNavigated={hasNavigated}>O Festival</MenuItem>
       <MenuItem hasNavigated={hasNavigated}>O PAVIO</MenuItem>
       <MenuItem hasNavigated={hasNavigated}>
-        <Link to="/inscricao-aviso" href="/inscricao-aviso">
+        <Link to="/minhas-inscricoes" href="/minhas-inscricoes">
           Inscrição
         </Link>
       </MenuItem>

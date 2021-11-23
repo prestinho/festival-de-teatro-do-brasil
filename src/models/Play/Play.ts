@@ -13,6 +13,7 @@ export interface Play {
   timestamp?: string;
   phone?: string;
   userId?: string;
+  status?: string;
 }
 export interface Image {
   image: string;
@@ -125,4 +126,8 @@ export const comparator = (a: Play, b: Play) => {
   } catch (e) {
     return 0;
   }
+};
+
+export const getStatusName = (letter: string | undefined) => {
+  return letter === "R" ? "Rejeitada" : letter === "A" ? "Aprovada" : "Em análise";
 };

@@ -41,6 +41,7 @@ const playConverter = {
     const play: Play = {
       id: snapshot.id,
       name: playData.name,
+      userId: playData.userId,
       about: playData.about,
       crew: playData.crew,
       teaser: playData.teaser,
@@ -48,6 +49,7 @@ const playConverter = {
       poster: poster,
       sessions: sessions,
       state: playData.state,
+      status: playData.status ?? "P",
     };
 
     return play;

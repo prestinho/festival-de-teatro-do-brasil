@@ -5,7 +5,8 @@ import { emptyPlay, Play } from "../../models/Play/Play";
 export const usePlaysContext = (): [
   () => Play[],
   (state: string) => Play[],
-  (playId: string) => Play
+  (playId: string) => Play,
+  (userId: string | undefined | null) => Play[]
 ] => {
   const serverPlays: Play[] = useContext(PlaysContext);
 
@@ -22,5 +23,11 @@ export const usePlaysContext = (): [
     [serverPlays]
   );
 
-  return [getAllPlays, getPlaysByState, getPlay];
+  const getPlaysByUserId = useCallback(
+    (userId: string | undefined | null): Play[] =>
+      serverPlays.filter((play) => play.userId === userId),
+    [serverPlays]
+  );
+
+  return [getAllPlays, getPlaysByState, getPlay, getPlaysByUserId];
 };

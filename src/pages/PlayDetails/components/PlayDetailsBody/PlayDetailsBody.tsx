@@ -38,7 +38,7 @@ const PlayDetailsBody: React.FC<Props> = ({ play }) => {
           ))}
         </>
       )}
-      <BackArrow size="5rem" onClick={() => history.push("/")} />
+      <BackArrow size="5rem" onClick={() => history.goBack()} />
     </DefaultContainer>
   );
 };
