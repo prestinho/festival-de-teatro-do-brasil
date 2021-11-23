@@ -110,3 +110,19 @@ export const emptyPlay = (): Play => ({
   poster: emptyImage(),
   sessions: [emptySession()],
 });
+
+export const comparator = (a: Play, b: Play) => {
+  try {
+    const timeA = a.sessions?.[0]?.time;
+    const timeB = b.sessions?.[0]?.time;
+    if (parseInt(timeA.day.split("-")[2]) - parseInt(timeB.day.split("-")[2]))
+      return parseInt(timeA.day.split("-")[2]) - parseInt(timeB.day.split("-")[2]);
+    else
+      return (
+        parseInt(timeA.hour.split(":").join("")) -
+        parseInt(timeB.hour.split(":").join(""))
+      );
+  } catch (e) {
+    return 0;
+  }
+};

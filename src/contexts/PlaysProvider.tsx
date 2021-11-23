@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { Play } from "../models/Play/Play";
+import { comparator, Play } from "../models/Play/Play";
 import playConverter from "../models/Play/firestoreConverter";
 
 import { collection, query, onSnapshot } from "firebase/firestore";
@@ -19,7 +19,7 @@ export const PlaysProvider: React.FC = (props) => {
         serverPlays.push(document.data());
       });
 
-      setPlays(serverPlays);
+      setPlays(serverPlays.sort(comparator));
     });
   }, []);
 
