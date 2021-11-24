@@ -4,6 +4,7 @@ import { getFirestore } from "@firebase/firestore";
 import { getStorage } from "@firebase/storage";
 import { GoogleAuthProvider, getAuth } from "firebase/auth";
 
+console.log(process.env.REACT_APP_FIREBASE_PROJECT_ID);
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -13,7 +14,6 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
-
 // Initialize Firebase
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const analytics = getAnalytics(app);
