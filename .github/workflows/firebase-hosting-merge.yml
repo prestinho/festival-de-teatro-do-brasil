@@ -7,22 +7,25 @@ name: Deploy to Firebase Hosting on merge
     branches:
       - main
 jobs:
-  create_env:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: |
-          cat << EOF > .env
-          REACT_APP_FIREBASE_PROJECT_ID=${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
-          LOUCURA=Rybka
-          EOF
+  # create_env:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: |
+  #         cat << EOF > .env
+  #         REACT_APP_FIREBASE_PROJECT_ID=${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
+  #         LOUCURA=Rybka
+  #         EOF
 
   build_and_deploy:
-    needs: create_env
+    #  needs: create_env
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: npm ci && npm run build
+      - env:
+          REACT_APP_FIREBASE_PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
+          REACT_APP_RYBKA: "RYBKA"
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
