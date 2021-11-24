@@ -2,19 +2,27 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy to Firebase Hosting on merge
-'on':
+"on":
   push:
     branches:
       - main
 jobs:
+  create_env:
+    runs-on: ubuntu-latest
+    run: |
+      touch .env
+      echo REACT_APP_FIREBASE_PROJECT_ID=${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }} >> .env
+      cat .env
+
   build_and_deploy:
+    needs: create_env
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_FESTIVAL_DE_TEATRO_DO_BRASIL }}'
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_FESTIVAL_DE_TEATRO_DO_BRASIL }}"
           channelId: live
           projectId: festival-de-teatro-do-brasil
