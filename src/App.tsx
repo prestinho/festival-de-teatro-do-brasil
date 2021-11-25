@@ -15,10 +15,12 @@ import PlaysProvider from "./contexts/PlaysProvider";
 import ScrollToTop from "./services/ScrollToTop/ScrollToTop";
 import LocalStorageService from "./services/LocalStorageService/LocalStorageService";
 import SubscriptionsManager from "./pages/SubscriptionsManager/SubscriptionsManager";
+import { useOncePerSession } from "./hooks/useOncePerSession/useOncePerSession";
 
 const App: React.FC = () => {
   const hasNavigated = useNavigation();
-  LocalStorageService.clear();
+
+  useOncePerSession(LocalStorageService.clear);
 
   return (
     <PlaysProvider>

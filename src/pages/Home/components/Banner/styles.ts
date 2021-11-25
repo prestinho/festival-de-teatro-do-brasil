@@ -7,10 +7,8 @@ export const Container = styled.div`
   //flex-direction: column;
   justify-items: center;
   align-items: center;
-  margin-top: 60px;
 
   @media (min-width: 768px) {
-    margin-top: 0px;
     align-items: flex-start;
     justify-content: center;
     //margin-left: 5vw;

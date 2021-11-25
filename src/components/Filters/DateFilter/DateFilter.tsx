@@ -3,37 +3,37 @@ import React, { ChangeEventHandler, memo } from "react";
 import { Container, LabeledRadio, Radio } from "../styles";
 
 export interface Props {
-  states: { key: any; value: string }[];
+  dates: { key: any; value: string }[];
   checked: string;
   handleChange: ChangeEventHandler;
 }
 
-const StateFilter: React.FC<Props> = ({ states, checked, handleChange }) => {
+const DateFilter: React.FC<Props> = ({ dates, checked, handleChange }) => {
   return (
     <Container>
       <LabeledRadio>
         <Radio
           type="radio"
-          id="all"
-          name="state"
+          id="all-date"
+          name="date"
           value={""}
           checked={checked === ""}
           onChange={handleChange}
         />
-        <label htmlFor="all">TODOS</label>
+        <label htmlFor="all-date">TODOS</label>
       </LabeledRadio>
-      {states.map((state: { key: any; value: string }) => (
-        <LabeledRadio key={state.key}>
+      {dates.map((date: { key: any; value: string }) => (
+        <LabeledRadio key={date.key}>
           <Radio
             type="radio"
-            id={state.key}
-            name="state"
-            value={state.key}
-            checked={checked === state.key}
+            id={date.key}
+            name="date"
+            value={date.key}
+            checked={checked === date.key}
             onChange={handleChange}
           />
-          <label key={state.key} htmlFor={state.key}>
-            {state.key}
+          <label key={date.key} htmlFor={date.key}>
+            {date.value}
           </label>
         </LabeledRadio>
       ))}
@@ -41,4 +41,4 @@ const StateFilter: React.FC<Props> = ({ states, checked, handleChange }) => {
   );
 };
 
-export default memo(StateFilter);
+export default memo(DateFilter);

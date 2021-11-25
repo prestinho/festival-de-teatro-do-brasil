@@ -1,10 +1,11 @@
 import { useCallback, useContext } from "react";
 import { PlaysContext } from "../../contexts/PlaysProvider";
+import { Filters } from "../../models/Filters/Filters";
 import { emptyPlay, Play } from "../../models/Play/Play";
 
 export const usePlaysContext = (): [
   () => Play[],
-  (state: string) => Play[],
+  (filters: Filters) => Play[],
   (playId: string) => Play,
   (userId: string | undefined | null) => Play[]
 ] => {
@@ -12,8 +13,18 @@ export const usePlaysContext = (): [
 
   const getAllPlays = useCallback((): Play[] => serverPlays, [serverPlays]);
 
-  const getPlaysByState = useCallback(
-    (state: string): Play[] => serverPlays.filter((play) => play.state === state),
+  const getPlays = useCallback(
+    (filters: Filters): Play[] => {
+      let result: Play[] = getAllPlays();
+      if (filters.state) result = result.filter((play) => play.state === filters.state);
+
+      if (filters.date)
+        result = result.filter((play) =>
+          play.sessions.map((session) => session.time.day).includes(filters.date)
+        );
+
+      return result;
+    },
     [serverPlays]
   );
 
@@ -29,5 +40,5 @@ export const usePlaysContext = (): [
     [serverPlays]
   );
 
-  return [getAllPlays, getPlaysByState, getPlay, getPlaysByUserId];
+  return [getAllPlays, getPlays, getPlay, getPlaysByUserId];
 };

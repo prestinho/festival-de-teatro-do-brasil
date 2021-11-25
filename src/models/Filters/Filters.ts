@@ -1,4 +1,4 @@
 export interface Filters {
   state: string;
-  day?: string;
+  date: string;
 }

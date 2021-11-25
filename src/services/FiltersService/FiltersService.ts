@@ -1,7 +1,7 @@
 import { Filters } from "../../models/Filters/Filters";
 import LocalStorageService from "../LocalStorageService/LocalStorageService";
 
-const emptyFilter: Filters = { state: "" };
+const emptyFilter: Filters = { state: "", date: "" };
 
 const FiltersService = {
   getFilters: (): Filters => LocalStorageService.getItemJSON("filters") ?? emptyFilter,

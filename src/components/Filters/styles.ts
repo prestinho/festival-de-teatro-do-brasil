@@ -15,12 +15,12 @@ export const LabeledRadio = styled.div`
     cursor: pointer;
     border-radius: 5px;
     font-weight: 800;
-    color: #FFFFFFCC;
+    color: #ffffffcc;
     transition: ease all 0.2s;
 
-    &:hover{ 
-        color: #FFFFFF;
-        background-color: #FFFFFF55;
+    &:hover {
+      color: #ffffff;
+      background-color: #ffffff55;
     }
   }
 `;
@@ -30,7 +30,7 @@ export const Radio = styled.input`
 
   &:checked + label {
     background-color: var(--quinternary-color);
-    color: #FFFFFF;
+    color: #ffffff;
     box-shadow: rgb(0 0 0 / 24%) 0px 3px 6px;
   }
 `;
