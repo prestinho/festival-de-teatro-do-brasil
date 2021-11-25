@@ -15,7 +15,7 @@ export const usePlaysContext = (): [
 
   const getPlays = useCallback(
     (filters: Filters): Play[] => {
-      let result: Play[] = getAllPlays();
+      let result: Play[] = serverPlays;
       if (filters.state) result = result.filter((play) => play.state === filters.state);
 
       if (filters.date)
