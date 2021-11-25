@@ -13,6 +13,8 @@ import { CameraOutline } from "@styled-icons/evaicons-outline/CameraOutline";
 import { Container, FileUploadDiv, Img, Label, ErrorLabel } from "./styles";
 import { RefDiv } from "../LabeledInput/styles";
 
+import { imgPathProvider } from "../../../services/imgPathProvider/imgPathProvider";
+
 export interface Props {
   image: Image;
   onChange?: (image: Image) => void;
@@ -31,7 +33,9 @@ const ImageInput: React.FC<Props> = ({
   maxSize,
 }) => {
   const [myImage, setMyImage] = useState<Image>(image);
-  const [selectedFile, setSelectedFile] = useState<string | ArrayBuffer>("");
+  const [selectedFile, setSelectedFile] = useState<string | ArrayBuffer>(
+    image.image ? imgPathProvider.getPath(image.image, 400) : ""
+  );
   const [imageError, setImageError] = useState<string | null>(null);
 
   if (!maxSize) maxSize = 5;
@@ -55,6 +59,7 @@ const ImageInput: React.FC<Props> = ({
 
   const addImagePreview = (e: ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader();
+
     if (e.currentTarget.files && e.currentTarget.files[0]) {
       reader.readAsDataURL(e.currentTarget.files[0]);
       if (e.currentTarget.files[0].size > (maxSize || 5) * 1024 * 1024) {

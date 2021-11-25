@@ -72,7 +72,7 @@ const SubscriptionsManager: React.FC<Props> = () => {
                     size="2rem"
                     color="red"
                     title="Editar"
-                    onClick={() => alert(`editar ${play.id}`)}
+                    onClick={() => history.push(`/editar-inscricao/${play.id}`)}
                   />
                 </Td>
               </Tr>

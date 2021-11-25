@@ -29,7 +29,7 @@ const SaveButton: React.FC<Props> = ({
   setLoading,
   isLoading,
   setForceValidation,
-}: Props) => {
+}) => {
   const history = useHistory();
   const auth: User | null = useAuthContext();
 
@@ -73,39 +73,56 @@ const SaveButton: React.FC<Props> = ({
     // everything ok, lets save!
     setLoading(true);
 
-    // not sync with server, but i'll take my chances ;-)
-    const id = slugify(play.name + "-" + new Date().getTime());
+    const userId = auth?.uid ?? "-";
 
-    // now we first upload our image, then we get its URL and set to a auxiliar play object
-    // after that we upload the auxiliar play and if it goes well, we set our original play
-    const imageRef = ref(storage, `plays/${id}/poster`);
+    // check if has an image data to upload
+    if (!play.poster.image.startsWith("data:")) {
+      await doSave(play, play.id, play.poster.image, userId);
+      setLoading(false);
+    } else {
+      // timestamp is not sync with server, but i'll take my chances ;-)
+      const id =
+        play.id && play.id !== ""
+          ? play.id
+          : slugify(play.name + "-" + new Date().getTime());
 
-    const userId = auth?.uid;
-
-    await uploadString(imageRef, play.poster.image, "data_url")
-      .then(async (snapshot) => {
-        const downloadUrl = imgPathProvider.cleanBasePath(await getDownloadURL(imageRef));
-        const playToBeSaved = play;
-        playToBeSaved.poster.image = downloadUrl;
-        playToBeSaved.userId = userId;
-        playToBeSaved.status = "P";
-
-        await setDoc(doc(db, "plays", id).withConverter(playConverter), playToBeSaved);
-        setPlay(playToBeSaved);
-
-        history.push({
-          pathname: "/inscricao-realizada",
-          state: { play: play },
-        });
-      })
-      .catch((reason) => {
-        console.error(reason);
-        // TODO: treat this error
-      })
-      .finally(() => setLoading(false));
+      // now we first upload our image, then we get its URL and set to a auxiliar play object
+      // after that we upload the auxiliar play and if it goes well, we set our original play
+      const imageRef = ref(storage, `plays/${id}/poster`);
+      await uploadString(imageRef, play.poster.image, "data_url")
+        .then(async (snapshot) => {
+          const downloadUrl = imgPathProvider.cleanBasePath(
+            await getDownloadURL(imageRef)
+          );
+          await doSave(play, id, downloadUrl, userId);
+        })
+        .catch((reason) => {
+          console.error(reason);
+          // TODO: treat this error
+        })
+        .finally(() => setLoading(false));
+    }
   };
 
-  return <Container onClick={handleSave}>Realizar Inscrição</Container>;
+  const doSave = async (play: Play, id: string, imageUrl: string, userId: string) => {
+    const playToBeSaved = play;
+    playToBeSaved.poster.image = imageUrl;
+    playToBeSaved.userId = userId;
+    playToBeSaved.status = "P";
+
+    await setDoc(doc(db, "plays", id).withConverter(playConverter), playToBeSaved);
+
+    history.push({
+      pathname: "/inscricao-realizada",
+      state: { play: play },
+    });
+  };
+
+  return (
+    <Container onClick={handleSave}>
+      {play.id ? "Atualizar Inscrição" : "Realizar Inscrição"}
+    </Container>
+  );
 };
 
 export default SaveButton;

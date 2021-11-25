@@ -41,14 +41,16 @@ const playConverter = {
     const play: Play = {
       id: snapshot.id,
       name: playData.name,
+      group: playData.group,
+      state: playData.state,
+      year: playData.year,
+      phone: playData.phone,
       userId: playData.userId,
       about: playData.about,
       crew: playData.crew,
       teaser: playData.teaser,
-      group: playData.group,
       poster: poster,
       sessions: sessions,
-      state: playData.state,
       status: playData.status ?? "P",
     };
 

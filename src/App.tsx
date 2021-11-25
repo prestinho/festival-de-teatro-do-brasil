@@ -33,6 +33,7 @@ const App: React.FC = () => {
         <PrivateRoute path="/inscricao-realizada" component={SubscriptionDone} />
 
         <Route path="/espetaculo/:playId" component={PlayDetails} />
+        <PrivateRoute path="/editar-inscricao/:playId" component={Subscription} />
 
         <PrivateRoute path="/minhas-inscricoes" component={SubscriptionsManager} />
       </Switch>
