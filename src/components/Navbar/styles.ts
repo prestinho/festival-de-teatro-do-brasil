@@ -14,7 +14,7 @@ export const Container = styled.div<Props>`
 
   @media (min-width: 768px) {
     justify-content: space-around;
-    padding-left: 0px;
+    padding-left: 40px;
     height: ${(props) => (props.hasNavigated ? "60px" : "80px")};
     //background-color: ${(props) => (props.hasNavigated ? "var(--primary-color)" : "")};
     background-color: var(--primary-color);
@@ -29,7 +29,11 @@ export const Img = styled.img`
   max-height: 100%;
 `;
 
-export const Girl = styled.div``;
+export const Girl = styled.div`
+  position: absolute;
+  left: 10px;
+  height: 100%;
+`;
 
 export const MenuItem = styled.div<Props>`
   transition: ease all 0.5s;
