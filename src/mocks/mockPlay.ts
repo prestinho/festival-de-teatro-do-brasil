@@ -10,6 +10,7 @@ export const mockPlay: Play = {
   teaser: "teaser",
   crew: "crew",
   poster: { image: "poster-image", caption: "poster-caption" },
+  status: "P",
   sessions: [
     {
       place: { id: "place-id", name: "place-name", address: "place-address" },
