@@ -7,7 +7,8 @@ export const usePlaysContext = (): [
   () => Play[],
   (filters: Filters) => Play[],
   (playId: string) => Play,
-  (userId: string | undefined | null) => Play[]
+  (userId: string | undefined | null) => Play[],
+  (filters: Filters, status: string[]) => Play[]
 ] => {
   const serverPlays: Play[] = useContext(PlaysContext);
 
@@ -40,5 +41,14 @@ export const usePlaysContext = (): [
     [serverPlays]
   );
 
-  return [getAllPlays, getPlays, getPlay, getPlaysByUserId];
+  const getPlaysWithStatus = useCallback(
+    (filters: Filters, status: string[]): Play[] => {
+      let result: Play[] = getPlays(filters);
+      result = result.filter((play) => status.includes(play.status));
+      return result;
+    },
+    [serverPlays]
+  );
+
+  return [getAllPlays, getPlays, getPlay, getPlaysByUserId, getPlaysWithStatus];
 };

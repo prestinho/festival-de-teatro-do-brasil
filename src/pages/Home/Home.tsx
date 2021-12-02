@@ -14,7 +14,7 @@ const Home: React.FC = () => {
   const [filters, setFilters] = useState<Filters>(FiltersService.getFilters());
   const [loading, setLoading] = useState<boolean>(false);
 
-  const [, getPlays] = usePlaysContext();
+  const [, , , , getPlaysWithStatus] = usePlaysContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilters((prevState: Filters) => ({
@@ -24,8 +24,8 @@ const Home: React.FC = () => {
   };
 
   const getPlaysVisiblePlays = useCallback(() => {
-    setPlays(getPlays(filters));
-  }, [filters, getPlays]);
+    setPlays(getPlaysWithStatus(filters, ["A"]));
+  }, [filters, getPlaysWithStatus]);
 
   useEffect(() => {
     getPlaysVisiblePlays();
