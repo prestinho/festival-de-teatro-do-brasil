@@ -1,13 +1,6 @@
 import React, { ChangeEvent, MouseEvent, useCallback, useEffect, useState } from "react";
 
-import {
-  emptyImage,
-  emptyPlay,
-  emptySession,
-  Image,
-  Play,
-  Session,
-} from "../../models/Play/Play";
+import { emptySession, Image, Play, Session } from "../../models/Play/Play";
 
 import { Sessions, AddButton, Row } from "./styles";
 import { DefaultContainer, PageContainer, H3 } from "../../styles/PageStyles";
@@ -20,13 +13,28 @@ import ImageInput from "../../components/Forms/ImageInput/ImageInput";
 import { StyledLoader, LoaderMsg } from "../../components/StyledLoading/StyledLoading";
 
 import SaveButton from "./components/SaveButton/SaveButton";
+import { usePlaysContext } from "../../hooks/usePlaysContext/usePlaysContext";
+import { useParams } from "react-router";
 
 export interface Props {}
 
+const getSessions = (updatePlay: Play) => {
+  const sessionsTuples: [number, Session][] = [];
+  updatePlay.sessions.forEach((session: Session, index: number) => {
+    sessionsTuples.push([index, session]);
+  });
+  return sessionsTuples;
+};
+
 const Subscription: React.FC<Props> = () => {
-  const [play, setPlay] = useState<Play>(emptyPlay());
-  const [poster, setPoster] = useState<Image>(emptyImage());
-  const [sessions, setSessions] = useState<[number, Session][]>([[0, emptySession()]]);
+  const [, , getPlay] = usePlaysContext();
+  const { playId } = useParams<{ playId: string }>();
+
+  const updatePlay = getPlay(playId);
+
+  const [play, setPlay] = useState<Play>(updatePlay);
+  const [poster, setPoster] = useState<Image>(updatePlay.poster);
+  const [sessions, setSessions] = useState<[number, Session][]>(getSessions(updatePlay));
 
   const [isLoading, setLoading] = useState<boolean>(false);
   const [forceValidation, setForceValidation] = useState<boolean>(false);

@@ -5,8 +5,9 @@ import { Container, Img, Girl, MenuItem } from "./styles";
 import GirlImg from "../../assets/imgs/ftb.png";
 import { Link } from "react-router-dom";
 
-import { User, signOut, getAuth } from "@firebase/auth";
+import { User } from "@firebase/auth";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import SingInSingOutItem from "./SingInSingOutItem/SingInSingOutItem";
 export interface Props {
   hasNavigated?: boolean;
 }
@@ -14,30 +15,23 @@ export interface Props {
 const Navbar: React.FC<Props> = ({ hasNavigated }) => {
   const auth: User | null = useAuthContext();
 
-  const handleSignOut = () => {
-    if (auth) {
-      signOut(getAuth())
-        .then(() => {
-          // Sign-out successful.
-        })
-        .catch((error) => {
-          // An error happened.
-        });
-    }
+  const MenuItemNav: React.FC = (props) => {
+    return <MenuItem hasNavigated={hasNavigated}>{props.children}</MenuItem>;
   };
+
   return (
     <Container hasNavigated={hasNavigated}>
       <Girl>
         <Img src={GirlImg} />
       </Girl>
-      <MenuItem hasNavigated={hasNavigated}>
+      <MenuItemNav>
         <Link to="/" href="/">
           Home
         </Link>
-      </MenuItem>
-      <MenuItem hasNavigated={hasNavigated}>O Festival</MenuItem>
-      <MenuItem hasNavigated={hasNavigated}>O PAVIO</MenuItem>
-      <MenuItem hasNavigated={hasNavigated}>
+      </MenuItemNav>
+      <MenuItemNav>O Festival</MenuItemNav>
+      <MenuItemNav>O PAVIO</MenuItemNav>
+      <MenuItemNav>
         {auth ? (
           <Link to="/minhas-inscricoes" href="/minhas-inscricoes">
             Minhas Inscrições
@@ -47,13 +41,10 @@ const Navbar: React.FC<Props> = ({ hasNavigated }) => {
             Inscrever Espetáculo
           </Link>
         )}
-      </MenuItem>
-      <MenuItem hasNavigated={hasNavigated}>Programação</MenuItem>
-      {auth && (
-        <MenuItem hasNavigated={hasNavigated}>
-          <span onClick={handleSignOut}>Logout</span>
-        </MenuItem>
-      )}
+      </MenuItemNav>
+      <MenuItemNav>Programação</MenuItemNav>
+
+      <SingInSingOutItem auth={auth} hasNavigated={hasNavigated} />
     </Container>
   );
 };

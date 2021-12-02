@@ -7,7 +7,12 @@ const mockSetFilters = jest.fn();
 
 describe("tests for component Filters", () => {
   test("Should exist container", () => {
-    render(<FiltersContainer filters={{ state: "PE" }} setFilters={mockSetFilters} />);
+    render(
+      <FiltersContainer
+        filters={{ state: "PE", date: "2022-03-25" }}
+        handleChange={mockSetFilters}
+      />
+    );
 
     const container = screen.getByTestId("filters");
     expect(container).toBeInTheDocument();

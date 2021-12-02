@@ -68,12 +68,14 @@ const SubscriptionsManager: React.FC<Props> = () => {
                 </Td>
 
                 <Td>
-                  <Edit2Outline
-                    size="2rem"
-                    color="red"
-                    title="Editar"
-                    onClick={() => alert(`editar ${play.id}`)}
-                  />
+                  {play.status === "P" && (
+                    <Edit2Outline
+                      size="2rem"
+                      color="red"
+                      title="Editar"
+                      onClick={() => history.push(`/editar-inscricao/${play.id}`)}
+                    />
+                  )}
                 </Td>
               </Tr>
             ))}

@@ -19,7 +19,8 @@ const PlayDetailsBody: React.FC<Props> = ({ play }) => {
           {play.year && (
             <>
               <Strong>Ano: </Strong>
-              {play.year}
+              <P>{play.year}</P>
+              <br />
             </>
           )}
           <Strong>Sobre: </Strong> <P>{play.about}</P>
