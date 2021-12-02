@@ -47,7 +47,7 @@ export const usePlaysContext = (): [
       result = result.filter((play) => status.includes(play.status));
       return result;
     },
-    [serverPlays]
+    [getPlays]
   );
 
   return [getAllPlays, getPlays, getPlay, getPlaysByUserId, getPlaysWithStatus];
