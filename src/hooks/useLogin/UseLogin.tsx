@@ -1,4 +1,4 @@
-import { signInWithPopup, getAuth, signOut, User } from "@firebase/auth";
+import { signInWithPopup, getAuth, signOut } from "@firebase/auth";
 import { auth, googleProvider } from "../../apis/firebase";
 
 export const useLogin = () => {

@@ -1,4 +1,4 @@
-import { getAuth, signOut, User } from "@firebase/auth";
+import { User } from "@firebase/auth";
 import React from "react";
 import { useLogin } from "../../../hooks/useLogin/UseLogin";
 import { MenuItem } from "../styles";
