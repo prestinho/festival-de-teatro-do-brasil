@@ -46,14 +46,6 @@ h1 {
     line-height: 3rem;
     padding-left: 20px;
     font-family: 'Montserrat', sans-serif;
-    letter-spacing: -2px;
-
-    background: linear-gradient(#ff46be,#ff2525);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-    -moz-text-fill-color: transparent;
 
     @media(min-width: 768px) {
         font-size: 3rem;
@@ -64,7 +56,6 @@ h1 {
         line-height: 4.5rem;
     }
 }
-
 
 
 .puffIn {

@@ -33,9 +33,22 @@ export const DefaultContainer = styled.div`
   }
 `;
 
+export const MainTitle = styled.h1`
+  letter-spacing: -2px;
+
+  background: linear-gradient(#ff46be, #ff2525);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+`;
+
 export const H1 = styled.h1`
   text-align: center;
   margin-bottom: 3rem;
+  font-size: 2rem;
+  color: var(--pink);
 `;
 
 export const H3 = styled.h3`

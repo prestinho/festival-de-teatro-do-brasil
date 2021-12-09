@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MainTitle } from "../../../../styles/PageStyles";
 
 export const Container = styled.div`
   height: 60vh;
@@ -37,7 +38,7 @@ export const Year = styled.div`
   }
 `;
 
-export const H1 = styled.h1`
+export const H1 = styled(MainTitle)`
   animation: puffIn 1s;
   z-index: 2;
 `;
