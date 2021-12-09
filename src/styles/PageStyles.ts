@@ -33,6 +33,11 @@ export const DefaultContainer = styled.div`
   }
 `;
 
+export const H1 = styled.h1`
+  text-align: center;
+  margin-bottom: 3rem;
+`;
+
 export const H3 = styled.h3`
   text-align: center;
   margin-bottom: 3rem;
@@ -51,6 +56,17 @@ export const Strong = styled.strong`
   &:hover {
     color: var(--quinternary-color);
   }
+`;
+
+export const Ul = styled.ul`
+  padding-bottom: 2rem;
+  list-style: none;
+`;
+
+export const Li = styled.li`
+  line-height: 1.5rem;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
 `;
 
 export const StyledLink = styled(Link)`

@@ -16,6 +16,8 @@ import ScrollToTop from "./services/ScrollToTop/ScrollToTop";
 import LocalStorageService from "./services/LocalStorageService/LocalStorageService";
 import SubscriptionsManager from "./pages/SubscriptionsManager/SubscriptionsManager";
 import { useOncePerSession } from "./hooks/useOncePerSession/useOncePerSession";
+import Festival from "./pages/Festival/Festival";
+import AboutUs from "./pages/AboutUs/AboutUs";
 
 const App: React.FC = () => {
   const hasNavigated = useNavigation();
@@ -29,15 +31,24 @@ const App: React.FC = () => {
       <ScrollToTop />
       <Switch>
         <Route exact={true} path="/" component={Home} />
+        <Route path="/o-festival" component={Festival} />
+        <Route path="/a-pavio" component={AboutUs} />
+        <Route path="/inscricao-aviso" component={SubscriptionLogin} />
+        <Route path="/espetaculo/:playId" component={PlayDetails} />
 
         <PrivateRoute path="/inscricao" component={Subscription} />
-        <Route path="/inscricao-aviso" component={SubscriptionLogin} />
-        <PrivateRoute path="/inscricao-realizada" component={SubscriptionDone} />
-
-        <Route path="/espetaculo/:playId" component={PlayDetails} />
-        <PrivateRoute path="/editar-inscricao/:playId" component={Subscription} />
-
-        <PrivateRoute path="/minhas-inscricoes" component={SubscriptionsManager} />
+        <PrivateRoute
+          path="/inscricao-realizada"
+          component={SubscriptionDone}
+        />
+        <PrivateRoute
+          path="/editar-inscricao/:playId"
+          component={Subscription}
+        />
+        <PrivateRoute
+          path="/minhas-inscricoes"
+          component={SubscriptionsManager}
+        />
       </Switch>
     </PlaysProvider>
   );

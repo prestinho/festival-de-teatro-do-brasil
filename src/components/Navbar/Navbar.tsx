@@ -29,8 +29,16 @@ const Navbar: React.FC<Props> = ({ hasNavigated }) => {
           Home
         </Link>
       </MenuItemNav>
-      <MenuItemNav>O Festival</MenuItemNav>
-      <MenuItemNav>O PAVIO</MenuItemNav>
+      <MenuItemNav>
+        <Link to="/o-festival" href="/o-festival">
+          O Festival
+        </Link>
+      </MenuItemNav>
+      <MenuItemNav>
+        <Link to="/a-pavio" href="/a-pavio">
+          A PAVIO
+        </Link>
+      </MenuItemNav>
       <MenuItemNav>
         {auth ? (
           <Link to="/minhas-inscricoes" href="/minhas-inscricoes">
