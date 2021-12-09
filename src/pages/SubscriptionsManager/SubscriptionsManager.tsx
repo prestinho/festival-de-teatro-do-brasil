@@ -5,7 +5,7 @@ import { usePlaysContext } from "../../hooks/usePlaysContext/usePlaysContext";
 import { getStatusName, Play } from "../../models/Play/Play";
 import {
   DefaultContainer,
-  H3,
+  H1,
   P,
   PageContainer,
   Strong,
@@ -36,10 +36,11 @@ const SubscriptionsManager: React.FC<Props> = () => {
   return (
     <PageContainer>
       <DefaultContainer>
-        <H3>Minhas Inscrições</H3>
+        <H1>Minhas Inscrições</H1>
         <P>
-          Bem vinde <Strong>{auth?.displayName}</Strong>! Aqui nessa página você pode
-          realizar uma nova inscrição e acompanhar as inscrições que já fez!
+          Bem vinde <Strong>{auth?.displayName}</Strong>! Aqui nessa página você
+          pode realizar uma nova inscrição e acompanhar as inscrições que já
+          fez!
         </P>
         <P>
           Lembramos que você pode editar as inscrições que enviou até elas serem
@@ -73,7 +74,9 @@ const SubscriptionsManager: React.FC<Props> = () => {
                       size="2rem"
                       color="red"
                       title="Editar"
-                      onClick={() => history.push(`/editar-inscricao/${play.id}`)}
+                      onClick={() =>
+                        history.push(`/editar-inscricao/${play.id}`)
+                      }
                     />
                   )}
                 </Td>
@@ -81,7 +84,9 @@ const SubscriptionsManager: React.FC<Props> = () => {
             ))}
             <Tr>
               <Td colSpan={3}>
-                <NewSubscriptionButton onClick={() => history.push("/inscricao-aviso")}>
+                <NewSubscriptionButton
+                  onClick={() => history.push("/inscricao-aviso")}
+                >
                   Enviar nova inscrição
                 </NewSubscriptionButton>
               </Td>
